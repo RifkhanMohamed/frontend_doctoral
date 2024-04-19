@@ -1,0 +1,30 @@
+<div class="account section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="login-form border p-5">
+            <div class="text-center heading">
+              <h2 class="mb-2">Login</h2>
+              <p class="lead">Don’t have an account? <a routerLink="/register">Create a free account</a></p>
+            </div>
+  
+            <form [formGroup]="loginForm">
+              <div class="form-group mb-4">
+                <label for="#">Enter Email</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Enter Email">
+                <span *ngIf="email && email.invalid && email.touched" style="color: red;">Email is required</span>
+              </div>
+              <div class="form-group">
+                <label for="#">Enter Password</label>
+                <!-- <a class="float-right" routerLink="/forgot-password">Forget password?</a> -->
+                <input type="password" class="form-control" formControlName="userPassword" placeholder="Enter Password">
+                <span *ngIf="userPassword && userPassword.invalid && userPassword.touched" style="color: red;">Password is required</span> 
+              </div>
+  
+              <button [disabled]="loginForm.invalid" (click)="login()" class="btn btn-main mt-3 btn-block">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
