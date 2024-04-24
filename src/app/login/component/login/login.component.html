@@ -11,8 +11,8 @@
             <form [formGroup]="loginForm">
               <div class="form-group mb-4">
                 <label for="#">Enter Email</label>
-                <input type="text" class="form-control" formControlName="email" placeholder="Enter Email">
-                <span *ngIf="email && email.invalid && email.touched" style="color: red;">Email is required</span>
+                <input type="text" class="form-control" formControlName="userName" placeholder="Enter Email">
+                <span *ngIf="userName && userName.invalid && userName.touched" style="color: red;">Email is required</span>
               </div>
               <div class="form-group">
                 <label for="#">Enter Password</label>

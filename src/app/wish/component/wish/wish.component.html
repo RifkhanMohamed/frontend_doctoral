@@ -1,0 +1,75 @@
+
+    <form action="#" [formGroup]="wish">
+        <div class="account section">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-sm-8">
+                <div class="login-form border p-5">
+                  <div class="text-center heading">
+                    <h2 class="mb-2">Add Registration Wish</h2>
+                  </div>
+        
+                  <div class="form-group mb-4">
+                    <label for="#">Course<span class="astric">*</span></label>
+                    <select class="form-control" placeholder="Select Course" formControlName="course" [disabled]="true">
+                      <option value="">Select an Option</option>
+                      <option *ngFor="let data of courses" value="{{data.id}}">{{data.name}}</option>
+                    </select>
+                    <span *ngIf="course && course.invalid && course.touched" class="astric">Course is required</span>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="#">Full Name<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Full Name" formControlName="name">
+                    <span *ngIf="name && name.invalid && name.touched" class="astric">Full Name is required</span>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="#">Email Address<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Email Address" formControlName="email">
+                    <span *ngIf="email && email.errors?.['required'] && email.touched" class="astric">Email is required</span>
+                    <span *ngIf="email && email.errors?.['email'] && email.touched" class="astric">Invalid email address</span>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="#">Mobile Number<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="phone">
+                    <span *ngIf="phone && phone.invalid && phone.touched" class="astric">Mobile Number is required</span>
+                  </div>
+                    <div class="form-group mb-4" >
+                      <label for="#">Qualifications</label>
+                      <input type="text" class="form-control" placeholder="Enter Qualifications (add atleast one qualification)" formControlName="qualification">
+                      <button *ngIf="qualification?.value" class="btn btn-main mt-3 btn-extra-small" style="margin-bottom: 10px;" (click)="addQualification(qualification?.value)">Add</button>
+                      <div class="card-container" *ngFor="let qualification1 of qualifications; let i = index">
+                        <mat-card class="card">
+                            <mat-card-content style="display: flex; justify-content: space-between;">
+                                <mat-card-title style="color: black">{{qualification1}}</mat-card-title>
+                                <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeQualification(i)" ></mat-icon>
+                            </mat-card-content>
+                        </mat-card>
+                     </div>
+                    </div> 
+                        
+                    <div class="form-group mb-4">
+                        <label for="#">Documents</label>
+                        <!-- Replace text input with file input -->
+                        <input type="file" class="form-control"  (change)="onFileChange($event)" multiple>
+                        <div class="card-container" *ngFor="let file of files; let i = index">
+                          <mat-card class="card">
+                            <mat-card-content style="display: flex; justify-content: space-between;">
+                              <mat-card-title style="color: rgb(100, 33, 33)">{{file.name}}</mat-card-title>
+                              <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile(i)"></mat-icon>
+                            </mat-card-content>
+                          </mat-card>
+                        </div>
+                      </div>
+                      
+
+                    <button (click)="onSubmit()" [disabled]="wish.invalid || isQualificationsEmpty() || isFilesEmpty()" class="btn btn-main mt-3 btn-block">Register</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </form>
+  
+  

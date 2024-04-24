@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
     <div class="container">
-      <a class="navbar-brand font-weight-bold" routerLink="/home"><img src="../../../../assets/images/doctoral.jpeg" style="width: 70px; height: 70px;">&nbsp;DMS</a>
+      <a class="navbar-brand font-weight-bold" routerLink="/home"><img src="../../../../assets/images/doctoral.jpeg" style="width: 70px; height: 70px;">&nbsp;Doctoral School</a>
   
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
         aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +31,18 @@
         </ul>
       </div>
       <div>
-        <button class="btn btn-main mt-3" routerLink="/register">Register</button>&nbsp;&nbsp;
-        <button class="btn btn-main mt-3" routerLink="/login">Login</button>
+        <button *ngIf="!isLoggedIn()" class="btn btn-main mt-3" routerLink="/register">Register</button>&nbsp;&nbsp;
+        <button *ngIf="!isLoggedIn()" class="btn btn-main mt-3" routerLink="/login">Login</button>
+        <!-- <button *ngIf="isLoggedIn()" class="btn btn-danger mt-3" (click)="logout()">Logout</button> -->
+        <li *ngIf="isLoggedIn()" class="list-inline-item nav-item dropdown dropdown-slide">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
+            <i class="tf-ion-ios-person mr-4" style="font-size: 40px;"></i></a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+              <li><a  routerLink="/home">Profile</a></li>
+              <li><a  style="color: red; cursor: pointer;"  (click)="logout()">Logout</a></li>
+            </ul>
+        </li>
       </div>
     </div>
   </nav>

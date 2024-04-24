@@ -1,0 +1,16 @@
+<div class="card-container" *ngFor="let course of courses">
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title style="color: red;">{{course.name}}</mat-card-title>
+        </mat-card-header>
+        <!-- <mat-card-content>
+            <p>At SPRU – Science Policy Research Unit, our research focuses on the direction, degree and impact of technological change. We aim to understand the varied pathways through which it may develop and how that can be strategically managed.</p>
+        </mat-card-content> -->
+        <mat-card-actions>
+            <button (click)="reDirect(course.id)" mat-button class="btn btn-primary">Enroll Now</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+  

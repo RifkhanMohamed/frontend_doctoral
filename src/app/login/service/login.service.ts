@@ -25,8 +25,16 @@ export class LoginService {
     localStorage.setItem("roles",JSON.stringify(roles));
   }
 
+  public setUserDetails(user:[]){
+    localStorage.setItem("user",JSON.stringify(user));
+  }
+
   public getRoles():[]{
     return JSON.parse(localStorage.getItem("roles")|| '{}'); 
+  }
+
+  public getUserDetails():[]{
+    return JSON.parse(localStorage.getItem("user")|| '{}'); 
   }
 
   public setToken(token:string){

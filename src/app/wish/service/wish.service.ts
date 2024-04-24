@@ -6,14 +6,15 @@ import { environment } from 'src/environment/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class WishService {
+
   constructor(private http:HttpClient) { }
 
   base_url=environment.api;
 
-  userRegister(data:any): Observable<any> {
+  wishCreate(data:any): Observable<any> {
     console.log(data);
     
-    return this.http.post<any>(this.base_url+"user/register",data);
+    return this.http.post<any>(this.base_url+"wish/create",data);
   }
 }

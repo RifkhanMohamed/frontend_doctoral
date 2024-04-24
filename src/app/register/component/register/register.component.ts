@@ -3,7 +3,8 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@a
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from '../../service/register.service';
-import { LoginService } from 'src/app/login/service/login.service';
+import { HttpClient, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
@@ -11,18 +12,17 @@ import { LoginService } from 'src/app/login/service/login.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
-  isLinear=false;
+  // isLinear=true;
   constructor(private registerService:RegisterService,
-    private loginService:LoginService,
     private router: Router,
     private toastr:ToastrService,
-    private formBuilder:FormBuilder){}
+    private http: HttpClient){}
   ngOnInit(): void {
   }
   
 
     personal=new FormGroup({
-    full_name:new FormControl('',[Validators.required]),
+    name:new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required,Validators.email]),
     phone:new FormControl('',[Validators.required]),
     password:new FormControl('',[Validators.required]),
@@ -35,12 +35,12 @@ export class RegisterComponent implements OnInit{
     county:new FormControl('',[Validators.required]),
     country:new FormControl('',[Validators.required])
   });
-  qualification=new FormGroup({
+  // qualification=new FormGroup({
 
-  });
-  document=new FormGroup({
+  // });
+  // document=new FormGroup({
 
-  });
+  // });
 
   // signupForm=this.formBuilder.group({
   //   personal:this.formBuilder.group({
@@ -65,8 +65,8 @@ export class RegisterComponent implements OnInit{
   //   })
   // })
   
-  get full_name(){
-    return this.personal.get('full_name');
+  get name(){
+    return this.personal.get('name');
   }
   
   get email(){
@@ -115,7 +115,7 @@ export class RegisterComponent implements OnInit{
   
   onSubmit(){
     let data={
-      "full_name":this.personal.get('full_name')?.value,
+      "name":this.personal.get('name')?.value,
       "email":this.personal.get('email')?.value,
       "phone":this.personal.get('phone')?.value,
       "password":this.personal.get('password')?.value,
@@ -129,15 +129,126 @@ export class RegisterComponent implements OnInit{
         "country":this.personal.get('country')?.value,
       }
     }
-    this.registerService.userRegister(data).subscribe(
-      (res:any)=>{
-        this.toastr.success("Welcome to the DMS!")
-        this.router.navigate(['/login']);
-      },
-      ()=>{
-        this.toastr.error("This username already exist!")
-      }
-    )
+    this.registerService.userRegister(data).toPromise()
+    .then(res=>{
+      console.log(data);
+        
+      this.toastr.success("Welcome to the DMS!")
+      this.router.navigate(['/login']);
+    })
+    .catch(e=>{
+      this.toastr.error("This username already exist!")
+    });
   }
+
+  // title = 'resumeMultipleUpload';
+  // selectedFiles: any = [];
+
+
+  // dropHandler(ev:any) {
+  //   // Prevent default behavior(file from being opened)
+  //   ev.preventDefault();
+  
+  //   if (ev.dataTransfer.items) {
+  //     // Use DataTransferItemList interface to access the file(s)
+  //     for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+  //       // If dropped items aren't files, reject them
+  //       if (ev.dataTransfer.items[i].kind === 'file') {
+  //         let file = ev.dataTransfer.items[i].getAsFile();
+  //         let obj= {
+  //           fileName: file.name,
+  //           selectedFile: file,
+  //           fileId: `${file.name}-${file.lastModified}`,
+  //           uploadCompleted: false
+  //         }
+  //         this.selectedFiles.push(obj);
+  //         console.log('... file[' + i + '].name = ' + file.name);
+  //       }
+  //     }
+  //     this.selectedFiles.forEach((file: any) => this.getFileUploadStatus(file));
+  //   } else {
+      
+  //     for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+  //       console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+  //     }
+  //   }
+  // }
+
+  // dragOverHandler(ev: { preventDefault: () => void; stopPropagation: () => void; }) {
+  //   console.log('File(s) in drop zone'); 
+  
+  //   // Prevent default behavior (Prevent file from being opened)
+  //   ev.preventDefault();
+  //   ev.stopPropagation();
+  // }
+
+
+
+  // getFileUploadStatus(file: any){
+  //   // fetch the file status on upload
+  //   let headers = new HttpHeaders({
+  //     "size": file.selectedFile.size.toString(),
+  //     "x-file-id": file.fileId,
+  //     'name': file.fileName
+  //   });
+
+  //   this.http
+  //     .get("http://localhost:3000/status", { headers: headers }).subscribe(
+  //       (res: any) => {
+  //         file.uploadedBytes = res.uploaded;
+  //         file.uploadedPercent = Math.round(100* file.uploadedBytes/file.selectedFile.size);
+  //         if(file.uploadedPercent >= 100){
+  //           file.uploadCompleted = true;
+  //         }
+  //       },err => {
+  //         console.log(err);
+  //       }
+  //     )
+  // }
+
+  // uploadFiles(){
+  //   this.selectedFiles.forEach((file:any) => {
+  //     if(file.uploadedPercent < 100)
+  //       this.resumeUpload(file);
+  //   })
+  // }
+
+  // resumeUpload(file: any){
+  //   const headers2 = new HttpHeaders({
+  //     "size": file.selectedFile.size.toString(),
+  //     "x-file-id": file.fileId,
+  //     "x-start-byte": file.uploadedBytes.toString(),
+  //     'name': file.fileName
+  //   });
+  //   console.log(file.uploadedBytes, file.selectedFile.size, file.selectedFile.slice(file.uploadedBytes).size);
+    
+  //   const req = new HttpRequest('POST', "http://localhost:3000/upload", file.selectedFile.slice(file.uploadedBytes, file.selectedFile.size + 1),{
+  //          headers: headers2,
+  //         reportProgress: true
+  //       });
+
+  //   this.http.request(req).subscribe(
+  //     (res: any) => {
+  //       if(res.type === HttpEventType.UploadProgress){
+  //         file.uploadedPercent = Math.round(100* (file.uploadedBytes+res.loaded)/res.total);
+  //         console.log(file.uploadedPercent);
+  //         if(file.uploadedPercent >= 100){
+  //           file.uploadCompleted = true;
+  //         }
+  //       }else{
+  //         if(file.uploadedPercent >= 100){
+  //           file.uploadCompleted = true;
+  //         }
+  //       }
+  //     },
+  //     err => {
+  //       console.log(err)
+  //     }
+  //   )
+  // }
+
+  // deleteFile(file: any){
+  //   this.selectedFiles.splice(this.selectedFiles.indexOf(file), 1);
+  // }
 
 }
