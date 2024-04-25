@@ -39,15 +39,14 @@ export class HeaderComponent implements OnInit{
   hasWish(){
     this.wishService.wishGetByUser(JSON.parse(localStorage.getItem("user")|| '{}').email).subscribe((results)=>{
       this.wish=results;
+      console.log(this.wish);
+      
       if(this.wish.length!=0){
         this.isWish=true;
        }
        else{
         this.isWish=false;
        }
-       console.log('====================================');
-       console.log(this.isWish,this.wish.length);
-       console.log('====================================');
     });
 
   }

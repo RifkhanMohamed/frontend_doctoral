@@ -1,5 +1,5 @@
 
-<form action="#" [formGroup]="wish">
+<form action="#" [formGroup]="Editwish">
     <div class="account section">
       <div class="container">
         <div class="row justify-content-center">
@@ -54,7 +54,7 @@
                     <div class="card-container" *ngFor="let file of files; let i = index">
                       <mat-card class="card">
                         <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage(i)">{{file.name}}</mat-card-title>
                           <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile(i)"></mat-icon>
                         </mat-card-content>
                       </mat-card>

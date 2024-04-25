@@ -20,4 +20,8 @@ export class WishService {
   wishGetByUser(user:any): Observable<any>{
     return this.http.get<any>(this.base_url+"wish/get/"+user);
   }
+
+  wishGetById(id:any): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/id/"+id);
+  }
 }

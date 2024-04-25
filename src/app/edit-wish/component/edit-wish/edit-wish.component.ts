@@ -27,18 +27,20 @@ private sanitize: DomSanitizer){}
     qualifications: string[] = [];
     courses:Course[]=[];
     files: any[] = [];
-
+wishId:any;
+wish:any=[];
 ngOnInit(): void {
   this.getCourse();
   this.route.queryParams.subscribe(params => {
     const selectedValue = params['wish'];
-    this.wish.get('course')?.setValue(selectedValue)
+    this.wishId=selectedValue;
   });
+  this.getWish();
 }
 
 
-  wish=new FormGroup({
-  course:new FormControl({value:'',disabled:true}),
+Editwish=new FormGroup({
+  course:new FormControl('',[Validators.required]),
   qualification:new FormControl(''),
   name:new FormControl('',[Validators.required]),
   email:new FormControl('',[Validators.required,Validators.email]),
@@ -48,36 +50,38 @@ ngOnInit(): void {
 getCourse(){
   this.courseService.getCourse().subscribe((results)=>{
     this.courses=results;
+    console.log(this.courses);
+    
   })
 }
 
 get course(){
-  return this.wish.get('course');
+  return this.Editwish.get('course');
 }
 
 get qualification(){
-  return this.wish.get('qualification');
+  return this.Editwish.get('qualification');
 }
 get name(){
-  return this.wish.get('name');
+  return this.Editwish.get('name');
 }
 
 get email(){
-  return this.wish.get('email');
+  return this.Editwish.get('email');
 }
 
 get phone(){
-  return this.wish.get('phone');
+  return this.Editwish.get('phone');
 }
 
 onSubmit(){
 
   let data={
-    "name":this.wish.get('name')?.value,
-    "email":this.wish.get('email')?.value,
-    "phone":this.wish.get('phone')?.value,
+    "name":this.Editwish.get('name')?.value,
+    "email":this.Editwish.get('email')?.value,
+    "phone":this.Editwish.get('phone')?.value,
     "course":{
-      "id": Number(this.wish.get('course')?.value)
+      "id": Number(this.Editwish.get('course')?.value)
     },
     "files":this.files,
     "qualification":this.qualifications,
@@ -113,7 +117,7 @@ onSubmit(){
 
 addQualification(quali:any){
   this.qualifications.push(quali);
-  this.wish.get('qualification')?.setValue("");
+  this.Editwish.get('qualification')?.setValue("");
 }
 
 isQualificationsEmpty(): boolean {
@@ -158,6 +162,46 @@ isFilesEmpty(): boolean {
 
 removeFile(index: number) {
   this.files.splice(index, 1);
+}
+
+getWish(){
+  this.wishService.wishGetById(this.wishId).subscribe((results)=>{
+    this.wish=results;
+    this.Editwish.get('course')?.setValue(this.wish.course.id);
+    this.Editwish.get('name')?.setValue(this.wish.name);
+    this.Editwish.get('email')?.setValue(this.wish.email);
+    this.Editwish.get('phone')?.setValue(this.wish.phone);
+    this.qualifications=this.wish.qualification;
+    this.files=this.wish.files
+  })
+}
+
+downloadImage(i:any): void {
+  const base64Data = this.wish.files[i].data; 
+  const type = this.wish.files[i].type;
+  const blob = this.base64ToBlob(base64Data, type);
+  const file = new File([blob], this.wish.files[i].name);
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(file);
+  link.download = this.wish.files[i].name;
+  link.click();
+
+}
+
+base64ToBlob(base64Data: string, contentType: string): Blob {
+  const byteCharacters = atob(base64Data);
+  const byteArrays = [];
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+  return new Blob(byteArrays, { type: contentType });
 }
 
 }
