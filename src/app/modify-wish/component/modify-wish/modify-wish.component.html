@@ -21,14 +21,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of wish | orderBy:key:reverse | paginate: {itemsPerPage:10,currentPage:p};">
+              <tr *ngFor="let data of wish | orderBy:key:reverse | paginate: {itemsPerPage:10,currentPage:p}; let i = index">
                 <td>{{data.course.name}}</td>
                 <td>{{data.email}}</td>
                 <td>{{data.phone}}</td>
                 <td>{{data.qualification}}</td>
 
-                <div *ngFor="let data1 of data.files">
-                    <td>{{ data1.name }}</td>
+                <div *ngFor="let data1 of data.files; let j = index">
+                    <td (click)="downloadImage(i,j)" style="cursor: pointer; ;">{{ data1.name }}</td>
                 </div>  
                 <td><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
               </tr>
