@@ -40,6 +40,7 @@
             <i class="tf-ion-ios-person mr-4" style="font-size: 40px;"></i></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
               <li><a  routerLink="/home">Profile</a></li>
+              <li *ngIf="isWish"><a routerLink="/modify-wish">Wishes</a></li>
               <li><a  style="color: red; cursor: pointer;"  (click)="logout()">Logout</a></li>
             </ul>
         </li>

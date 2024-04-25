@@ -1,21 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { WishService } from '../../service/wish.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CourseService } from 'src/app/course/service/course.service';
-import {Course} from './../../../course/model/course'
-import { LoginService } from 'src/app/login/service/login.service';
-import { FileHandle } from 'src/app/_model/file-handle.model';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FileHandle } from 'src/app/_model/file-handle.model';
+import { Course } from 'src/app/course/model/course';
+import { CourseService } from 'src/app/course/service/course.service';
+import { LoginService } from 'src/app/login/service/login.service';
+import { WishService } from 'src/app/wish/service/wish.service';
 
 @Component({
-  selector: 'app-wish',
-  templateUrl: './wish.component.html',
-  styleUrls: ['./wish.component.css']
+  selector: 'app-edit-wish',
+  templateUrl: './edit-wish.component.html',
+  styleUrls: ['./edit-wish.component.css']
 })
-export class WishComponent implements OnInit{
+export class EditWishComponent implements OnInit{
   constructor(private wishService:WishService,
     private router: Router,
     private toastr:ToastrService,
@@ -31,7 +31,7 @@ private sanitize: DomSanitizer){}
 ngOnInit(): void {
   this.getCourse();
   this.route.queryParams.subscribe(params => {
-    const selectedValue = params['course'];
+    const selectedValue = params['wish'];
     this.wish.get('course')?.setValue(selectedValue)
   });
 }
@@ -159,4 +159,5 @@ isFilesEmpty(): boolean {
 removeFile(index: number) {
   this.files.splice(index, 1);
 }
+
 }

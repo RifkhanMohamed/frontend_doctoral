@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then(e => e.LoginModule)},
   { path: 'register', loadChildren: () => import('./register/register.module').then(e => e.RegisterModule)},
   { path: 'wish', loadChildren: () => import('./wish/wish.module').then(e => e.WishModule)},
+  { path: 'modify-wish', loadChildren: () => import('./modify-wish/modify-wish.module').then(e => e.ModifyWishModule)},
+  { path: 'edit-wish', loadChildren: () => import('./edit-wish/edit-wish.module').then(e => e.EditWishModule)},
   { path: 'course', loadChildren: () => import('./course/course.module').then(e => e.CourseModule)},
   {path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

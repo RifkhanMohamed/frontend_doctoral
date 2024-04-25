@@ -1,18 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login/service/login.service';
+import { WishService } from 'src/app/wish/service/wish.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
-  constructor(private loginService:LoginService,private router: Router){
+  ngOnInit(): void {
+    this.hasWish();
+  }
+  constructor(private loginService:LoginService,private router: Router,private wishService:WishService){
+
   }
   arrayLength:any;
   array:any;
+  wish: any[]=[];
+  isWish:boolean | undefined;
   navigateHome(){
     this.router.navigate(['home']);
   }
@@ -27,6 +34,22 @@ export class HeaderComponent {
     this.arrayLength=0;
     this.array=[];
     this.router.navigate(['/login']);
+  }
+
+  hasWish(){
+    this.wishService.wishGetByUser(JSON.parse(localStorage.getItem("user")|| '{}').email).subscribe((results)=>{
+      this.wish=results;
+      if(this.wish.length!=0){
+        this.isWish=true;
+       }
+       else{
+        this.isWish=false;
+       }
+       console.log('====================================');
+       console.log(this.isWish,this.wish.length);
+       console.log('====================================');
+    });
+
   }
 
 }

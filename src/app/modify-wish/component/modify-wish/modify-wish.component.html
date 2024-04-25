@@ -1,1 +1,42 @@
-<p>modify-wish works!</p>
+
+
+<div class="container-fluid page">
+
+    <div class="text-center heading">
+        <h1 class="mb-2">Registred Wishes</h1>
+      </div>
+
+    <div class="page__content shadow p-3 position-relative">
+        <nav class="navbar">
+          </nav>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th (click)="sort('course')">Course&nbsp;<i class="fa fa-sort"></i></th>
+                <th (click)="sort('email')">Email&nbsp;<i class="fa fa-sort"></i></th>
+                <th (click)="sort('phone')">Phone&nbsp;<i class="fa fa-sort"></i></th>
+                <th (click)="sort('qulaification')">Qualification&nbsp;<i class="fa fa-sort"></i></th>
+                <th>Files</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of wish | orderBy:key:reverse | paginate: {itemsPerPage:10,currentPage:p};">
+                <td>{{data.course.name}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.phone}}</td>
+                <td>{{data.qualification}}</td>
+
+                <div *ngFor="let data1 of data.files">
+                    <td>{{ data1.name }}</td>
+                </div>  
+                <td><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
+              </tr>
+            </tbody>
+  
+          </table>
+          <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
+        <br>
+        <br>
+    </div>
+</div>
