@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
-    <div class="container">
-      <a class="navbar-brand font-weight-bold" routerLink="/home"><img src="../../../../assets/images/doctoral.jpeg" style="width: 70px; height: 70px;">&nbsp;Doctoral School</a>
+  <a routerLink="/home"><img src="../../../../assets/images/logo.jpeg" style="width: 210px; height: 70px;"></a>  
+  <div class="container">
+
   
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
         aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,29 +11,74 @@
       <div class="collapse navbar-collapse " id="main-navbar">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <a class="nav-link" routerLink="/home">Home </a>
+            <a class="nav-link" routerLink="/home">Home</a>
           </li>
   
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about">Study Centres</a>
+          <li class="list-inline-item nav-item dropdown dropdown-slide">
+            
+
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
+                Research
+              </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                  <li><a routerLink="/physical-matter-sciences">Physical Matter Sciences</a></li>
+                  <li><a routerLink="/matterial-sciences-chemistery">Material Sciences Chemistry</a></li>
+                  <li><a routerLink="/applied-mathematics-sciences">Applied Mathematics Sciences</a></li>
+                  <li><a routerLink="/earth-and-universe-sciences">Earth and Universe Sciences</a></li>
+                  <li><a routerLink="/life-and-health-sciences">Life and health sciences</a></li>
+                  <li><a routerLink="/computer-sciences">Computer Sciences</a></li>
+                </ul>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about">Research</a>
-          </li>
+          <li class="list-inline-item nav-item dropdown dropdown-slide">
+            
+
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
+              Documents
+            </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                <li><a routerLink="/home">PHD Document</a></li>
+                <li><a routerLink="/modify-wish">Research Document</a></li>
+              </ul>
+        </li>
+
+        <li class="list-inline-item nav-item dropdown dropdown-slide">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
+            Center
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+              <li><a routerLink="/presentation">Presentation</a></li>
+              <li><a routerLink="/doctoral-training">Doctoral training</a></li>
+              <li><a routerLink="/ced">CED Sciences & Techniques training offers</a></li>
+            </ul>
+      </li>
+
+      <li class="list-inline-item nav-item dropdown dropdown-slide">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
+        Research laboratories
+        </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+            <li><a routerLink="/biology-lab">Biology</a></li>
+            <li><a routerLink="/chemistry-lab">Chemistry</a></li>
+            <li><a routerLink="/geology-lab">Geology</a></li>
+            <li><a routerLink="/computer-lab">Computer Science</a></li>
+            <li><a routerLink="/maths-lab">Methematics</a></li>
+            <li><a routerLink="/physical-lab">Physical</a></li>
+          </ul>
+    </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact Us</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/faq">FAQ</a>
+            <a class="nav-link" routerLink="/faq">Scientific databases</a>
           </li>
         </ul>
       </div>
       <div>
-        <button *ngIf="!isLoggedIn()" class="btn btn-main mt-3" routerLink="/register">Register</button>&nbsp;&nbsp;
-        <button *ngIf="!isLoggedIn()" class="btn btn-main mt-3" routerLink="/login">Login</button>
+        <button *ngIf="!isLoggedIn()" class="btn btn-main btn-extra-small mt-2" routerLink="/register">Register</button>&nbsp;&nbsp;
+        <button *ngIf="!isLoggedIn()" class="btn btn-main btn-extra-small mt-2" routerLink="/login">Login</button>
         <!-- <button *ngIf="isLoggedIn()" class="btn btn-danger mt-3" (click)="logout()">Logout</button> -->
         <li *ngIf="isLoggedIn()" class="list-inline-item nav-item dropdown dropdown-slide">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -46,4 +92,5 @@
         </li>
       </div>
     </div>
+
   </nav>

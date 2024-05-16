@@ -1,0 +1,5 @@
+.mat-grid-tile:hover .grid-tile img {
+    transform: scale(1.1); /* Example: Increase size */
+    transition: transform 0.5s ease; /* Example: Smooth transition */
+    cursor: pointer;
+}

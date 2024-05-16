@@ -11,7 +11,7 @@
         
                   <div class="form-group mb-4">
                     <label for="#">Course<span class="astric">*</span></label>
-                    <select class="form-control" placeholder="Select Course" formControlName="course" [disabled]="true">
+                    <select class="form-control" placeholder="Select Course" formControlName="course">
                       <option value="">Select an Option</option>
                       <option *ngFor="let data of courses" value="{{data.id}}">{{data.name}}</option>
                     </select>

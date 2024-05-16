@@ -1,16 +1,120 @@
-<div class="card-container" *ngFor="let course of courses">
+<img src="../../../../assets/images/cover.jpeg" style=" width: 100%; height: auto; ">
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8 ">
+        <p  style="font-size: 20px; text-align: justify;">
+
+            The main objective of the Center for Doctoral Studies at University Mohammed V CEDoc is to train doctoral students in academic research through a path of excellence and innovation. The multidisciplinary approach creates a center of expertise between the university's different research programs to respond to the issues and challenges of Morocco and Africa. The CEDoc aims to support doctoral students in the different stages of preparing their thesis by providing them with specific and complementary training to academic standards of research and excellence.
+        </p>
+        <p style="font-size: 20px; text-align: justify;">
+            The Center for Doctoral Studies at University Mohammed V attracts the attention of students holding a master's degree, an engineering degree or equivalent.
+        </p>
+        <p style="font-size: 20px; text-align: justify;">
+            Possibility to apply on a maximum number of 2 subjects on the following link:  <button  (click)="reDirect1()" mat-button class="btn btn-primary">Click here</button>
+        </p>
+    </div>
+
+    <div class="col-sm-2">
+
+    </div>
+</div>
+<br>
+<ul>
+  <li style="--accent-color:#41516C">
+      <div class="date">June 10, 2024</div>
+      <div class="title">Call for application</div>
+      <!-- <div class="descr">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas itaque hic quibusdam fugiat est numquam harum, accusamus suscipit consequatur laboriosam!</div> -->
+  </li>
+  <li style="--accent-color:#FBCA3E">
+      <div class="date">July 10, 2024</div>
+      <div class="title">Deadline for applcations</div>
+      <!-- <div class="descr">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos adipisci nobis nostrum vero nihil veniam.</div> -->
+  </li>
+  <li style="--accent-color:#E24A68">
+      <div class="date">August 10, 2024</div>
+      <div class="title">Selection of doctoral students/interviews</div>
+      <!-- <div class="descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga minima consequuntur soluta placeat iure totam commodi repellendus ea delectus, libero fugit quod reprehenderit, sequi quo, et dolorum saepe nulla hic.</div> -->
+  </li>
+  <li style="--accent-color:#1B5F8C">
+      <div class="date">September 10, 2024</div>
+      <div class="title">Communication of results</div>
+      <!-- <div class="descr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, cumque.</div> -->
+  </li>
+  <li style="--accent-color:#4CADAD">
+      <div class="date">October 10, 2024</div>
+      <div class="title">Start date of doctoral students</div>
+      <!-- <div class="descr">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, non.</div> -->
+  </li>
+</ul>
+<br>
+<div class="row">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8 ">
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item" >
+              <h2 class="accordion-header" [attr.id]="'heading'+1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+1" aria-expanded="false" [attr.aria-controls]="'collapse'+1">
+                  Access conditions
+                </button>
+              </h2>
+              <div [attr.id]="'collapse'+1" class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading'+1" data-bs-parent="#accordionExample">
+                <div class="accordion-body" style=" text-align: justify;">
+                    Hold a master's degree, an engineering diploma or a recognized equivalent diploma and meet the admission criteria specified in the descriptions of doctoral training, in particular the adequacy between the research subject and the diplomas.
+                </div>
+              </div>
+        
+              <h2 class="accordion-header" [attr.id]="'heading'+2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+2" aria-expanded="false" [attr.aria-controls]="'collapse'+2">
+                  Application materials
+                </button>
+              </h2>
+              <div [attr.id]="'collapse'+2" class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading'+2" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>
+                        For a complete application, we ask applicants to submit:
+                    </p>
+                    <p>• A CV of 2 pages maximum</p>
+                    <p>• Research publications or patents, if applicable</p>
+                    <p>• Research publications or patents, if applicable</p>
+                    <p>• A cover letter indicating relevant extracurricular activities, if applicable</p>
+                    <p>• Academic files: certified copies of diplomas (with detailed transcripts)</p>
+                    <p>• Certified copy of identity card and/or passport.</p>
+                    <p>• 2 letters of recommendation</p>
+                    <p style="text-align: justify;">• The research project proposal (2 – 3 pages): Writing a research proposal (2 to 3 pages) on the subject specifying its scope, the questions asked, the research hypotheses, the theoretical field of investigation and conceptual, the potential benefits for the benefit of the UM6P, Morocco or Africa.</p>
+                    <p style="text-align: justify;">The review committee will verify that the proposed project matches the applicant's background and experience and then rank the applications based on excellence to invite the highest ranked applicants for an interview (oral presentation and/or written test).</p>
+                    <p>The UM6P CEDoc communicates the decision of the admissions committee to the candidates in writing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+</div>
+<br>
+
+
+<!-- <div class="card-container" *ngFor="let course of courses">
 
     <mat-card class="card">
         <mat-card-header>
             <mat-card-title style="color: red;">{{course.name}}</mat-card-title>
         </mat-card-header>
-        <!-- <mat-card-content>
-            <p>At SPRU – Science Policy Research Unit, our research focuses on the direction, degree and impact of technological change. We aim to understand the varied pathways through which it may develop and how that can be strategically managed.</p>
-        </mat-card-content> -->
         <mat-card-actions>
-            <button (click)="reDirect(course.id)" mat-button class="btn btn-primary">Enroll Now</button>
+            <button *ngIf="this.isLoggedIn()" [disabled]="course.disabled" (click)="reDirect(course.id)" mat-button class="btn btn-primary">{{ course.isEnroll }}</button>
+            <button *ngIf="!this.isLoggedIn()" (click)="reDirect(course.id)" mat-button class="btn btn-primary">Enroll Now</button>
         </mat-card-actions>
     </mat-card>
-</div>
+</div> -->
 
   

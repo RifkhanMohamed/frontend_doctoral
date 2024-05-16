@@ -30,15 +30,15 @@ private sanitize: DomSanitizer){}
 
 ngOnInit(): void {
   this.getCourse();
-  this.route.queryParams.subscribe(params => {
-    const selectedValue = params['course'];
-    this.wish.get('course')?.setValue(selectedValue)
-  });
+  // this.route.queryParams.subscribe(params => {
+  //   const selectedValue = params['course'];
+  //   this.wish.get('course')?.setValue(selectedValue)
+  // });
 }
 
 
   wish=new FormGroup({
-  course:new FormControl({value:'',disabled:true}),
+  course:new FormControl('',[Validators.required]),
   qualification:new FormControl(''),
   name:new FormControl('',[Validators.required]),
   email:new FormControl('',[Validators.required,Validators.email]),
@@ -82,6 +82,7 @@ onSubmit(){
     "files":this.files,
     "qualification":this.qualifications,
     "user": JSON.parse(localStorage.getItem("user")|| '{}').email,
+    "status": "enrolled"
   }
 
   const formData=new FormData();

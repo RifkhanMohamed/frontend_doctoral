@@ -17,6 +17,7 @@
                 <th (click)="sort('phone')">Phone&nbsp;<i class="fa fa-sort"></i></th>
                 <th (click)="sort('qulaification')">Qualification&nbsp;<i class="fa fa-sort"></i></th>
                 <th>Files</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -29,14 +30,20 @@
 
                 <div *ngFor="let data1 of data.files; let j = index">
                     <td (click)="downloadImage(i,j)" style="cursor: pointer; ;">{{ data1.name }}</td>
-                </div>  
+                </div> 
+                <td>{{ data.status }}</td> 
                 <td><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
               </tr>
             </tbody>
   
           </table>
+
           <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
+          <button *ngIf="!isDownload" (click)="onSubmit()" class="btn btn-small btn-main " style="float: right;">Submit</button>
+          <button *ngIf="isDownload" (click)="onDownload()" class="btn btn-small btn-secondary " style="float: right;">Download</button>
         <br>
         <br>
     </div>
+
 </div>
+

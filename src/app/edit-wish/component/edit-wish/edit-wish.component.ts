@@ -26,7 +26,8 @@ private loginService: LoginService,
 private sanitize: DomSanitizer){}
     qualifications: string[] = [];
     courses:Course[]=[];
-    files: any[] = [];
+
+    files1: any[]=[];
 wishId:any;
 wish:any=[];
 ngOnInit(): void {
@@ -75,18 +76,20 @@ get phone(){
 }
 
 onSubmit(){
-
   let data={
+    "id": this.wish.id,
     "name":this.Editwish.get('name')?.value,
     "email":this.Editwish.get('email')?.value,
     "phone":this.Editwish.get('phone')?.value,
     "course":{
       "id": Number(this.Editwish.get('course')?.value)
     },
-    "files":this.files,
+    "files":this.files1,
     "qualification":this.qualifications,
     "user": JSON.parse(localStorage.getItem("user")|| '{}').email,
+    "status": "enrolled"
   }
+console.log(data);
 
   const formData=new FormData();
   formData.append(
@@ -103,8 +106,6 @@ onSubmit(){
   }
   this.wishService.wishCreate(formData).toPromise()
   .then(res=>{
-   console.log(data);
-      
     this.toastr.success("Successfully register your wish!")
     this.router.navigate(['/home']);
   })
@@ -142,7 +143,7 @@ onFileChange(event: any) {
         window.URL.createObjectURL(file)
       )
     }
-    this.files.push(fileHandle);
+    this.files1.push(fileHandle);
   } 
 }
 
@@ -150,18 +151,18 @@ onFileChange(event: any) {
 
 
 uploadFiles() {
-  for (const file of this.files) {
+  for (const file of this.files1) {
     this.addQualification(file.name);
   }
-  this.files = [];
+  this.files1 = [];
 }
 
 isFilesEmpty(): boolean {
-  return this.files.length === 0;
+  return this.files1.length === 0;
 }
 
 removeFile(index: number) {
-  this.files.splice(index, 1);
+  this.files1.splice(index, 1);
 }
 
 getWish(){
@@ -172,8 +173,24 @@ getWish(){
     this.Editwish.get('email')?.setValue(this.wish.email);
     this.Editwish.get('phone')?.setValue(this.wish.phone);
     this.qualifications=this.wish.qualification;
-    this.files=this.wish.files
+
+  for(var i=0;i<this.wish.files.length;i++){
+    const base64Data = this.wish.files[i].data; 
+    const type = this.wish.files[i].type;
+    const blob = this.base64ToBlob(base64Data, type);
+    const file = new File([blob], this.wish.files[i].name);
+    const fileHandle: FileHandle = {
+      file:file,
+      url: this.sanitize.bypassSecurityTrustUrl(
+        window.URL.createObjectURL(file)
+      )
+    }
+    this.files1.push(fileHandle);
+  }
+    // this.files=this.wish.files
   })
+  console.log(this.files1);
+  
 }
 
 downloadImage(i:any): void {
@@ -181,7 +198,7 @@ downloadImage(i:any): void {
   const type = this.wish.files[i].type;
   const blob = this.base64ToBlob(base64Data, type);
   const file = new File([blob], this.wish.files[i].name);
-
+  
   const link = document.createElement('a');
   link.href = URL.createObjectURL(file);
   link.download = this.wish.files[i].name;

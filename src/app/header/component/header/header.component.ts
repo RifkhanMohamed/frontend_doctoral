@@ -11,10 +11,10 @@ import { WishService } from 'src/app/wish/service/wish.service';
 export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
-    this.hasWish();
+    
   }
   constructor(private loginService:LoginService,private router: Router,private wishService:WishService){
-
+    this.hasWish();
   }
   arrayLength:any;
   array:any;

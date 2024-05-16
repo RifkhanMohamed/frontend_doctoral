@@ -501,7 +501,7 @@ a.text-primary:hover {
 .navigation .navbar-nav > li > a {
   color: #000;
   font-size: 17px;
-  padding: 20px 15px;
+  /* padding: 20px 15px; */
   text-transform: capitalize;
   -webkit-transition: .2s ease-in-out 0s;
   transition: .2s ease-in-out 0s;
@@ -524,7 +524,7 @@ a.text-primary:hover {
 
 .navigation .navbar-nav .nav-link span {
   font-size: 8px;
-  margin-left: 3px;
+  /* margin-left: 3px; */
 }
 
 .navigation .nav .open > a {
@@ -693,7 +693,7 @@ a.text-primary:hover {
 
 @media (max-width: 480px) {
   .navigation {
-    padding: 15px 25px;
+    /* padding: 15px 25px; */
   }
   .navigation .navbar-nav .nav-link {
     border-bottom: 1px solid #dedede;
@@ -703,7 +703,7 @@ a.text-primary:hover {
 
 @media (max-width: 400px) {
   .navigation {
-    padding: 15px 25px;
+    /* padding: 15px 25px; */
   }
   .navigation .navbar-nav .nav-link {
     border-bottom: 1px solid #dedede;
@@ -713,7 +713,7 @@ a.text-primary:hover {
 
 @media (max-width: 768px) {
   .navigation {
-    padding: 15px 25px;
+    /* padding: 15px 25px; */
   }
   .navigation .navbar-nav .nav-link {
     border-bottom: 1px solid #dedede;
@@ -723,7 +723,7 @@ a.text-primary:hover {
 
 @media (max-width: 992px) {
   .navigation {
-    padding: 15px 25px;
+    /* padding: 15px 25px; */
   }
   .navigation .navbar-nav .nav-link {
     border-bottom: 1px solid #dedede;
