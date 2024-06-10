@@ -3,7 +3,7 @@
 <br>
 <mat-grid-list cols="3" rowHeight="3:2">
     <mat-grid-tile >
-        <div class="grid-tile" routerLink="/presentation">
+        <div class="grid-tile" (click)="reDirect(1)">
             <img src="./../../../../../assets/images/chemistry.png" width="300px" height="200px" alt="">
             <br>
             <br>
@@ -11,7 +11,7 @@
         </div>
     </mat-grid-tile>
     <mat-grid-tile >
-        <div class="grid-tile">
+        <div class="grid-tile" (click)="reDirect(2)">
             <img src="./../../../../../assets/images/chemistry1.png" width="300px" height="200px" alt="">
             <br>
             <br>

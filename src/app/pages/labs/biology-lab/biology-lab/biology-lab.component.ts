@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-biology-lab',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./biology-lab.component.css']
 })
 export class BiologyLabComponent {
+
+  constructor(private router: Router){
+  }
 details=[
 {
   id:1,
@@ -184,9 +188,14 @@ details=[
     }
   ]
 }
-] 
-  
+]   
   reDirect(id:Number){
-    
+    const itemWithId1 = this.details.find(item => item.id === id);
+    const queryParams: any = {};
+    queryParams.myArray = JSON.stringify(itemWithId1);
+    const navigationExtras: NavigationExtras = {
+      queryParams
+    };
+    this.router.navigate(['/detail-lab'], navigationExtras);
   }
 }

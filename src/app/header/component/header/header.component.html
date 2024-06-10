@@ -39,8 +39,8 @@
               Documents
             </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-                <li><a routerLink="/home">PHD Document</a></li>
-                <li><a routerLink="/modify-wish">Research Document</a></li>
+                <li><a href="./../../../../assets/database.pdf">PHD Document</a></li>
+                <li><a href="./../../../../assets/database.pdf">Research Document</a></li>
               </ul>
         </li>
 
@@ -72,7 +72,7 @@
     </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/faq">Scientific databases</a>
+            <a class="nav-link" routerLink="/database">Scientific databases</a>
           </li>
         </ul>
       </div>
@@ -85,7 +85,7 @@
           aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
             <i class="tf-ion-ios-person mr-4" style="font-size: 40px;"></i></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-              <li><a  routerLink="/home">Profile</a></li>
+              <!-- <li><a  routerLink="/home">Profile</a></li> -->
               <li *ngIf="isWish"><a routerLink="/modify-wish">Wishes</a></li>
               <li><a  style="color: red; cursor: pointer;"  (click)="logout()">Logout</a></li>
             </ul>

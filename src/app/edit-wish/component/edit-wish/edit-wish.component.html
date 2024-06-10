@@ -1,39 +1,562 @@
 
-<form action="#" [formGroup]="Editwish">
+  <form action="#" [formGroup]="Editwish">
     <div class="account section">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-sm-8">
+          <div class="col-sm-9">
             <div class="login-form border p-5">
               <div class="text-center heading">
-                <h2 class="mb-2">Edit Wish</h2>
+                <h2  *ngIf="this.isCommittee==true&&this.isUser==false" class="mb-2">View PHD Registration 1<sup>st</sup> Year</h2>
+                <h2  *ngIf="this.isCommittee==false&&this.isUser==true" class="mb-2">Edit PHD Registration 1<sup>st</sup> Year</h2>
               </div>
     
               <div class="form-group mb-4">
+                <label for="#">Original diplomas: Baccalauréat, Licence and Master</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Certified photocopy of baccalaureate and university diplomas</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange1($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files1; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage1(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile1(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Bachelor's and Master's transcripts</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange2($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files2; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage2(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile2(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">4 Passport-size photographs</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange3($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files3; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage3(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile3(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Birth certificate</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange4($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files4; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage4(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile4(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Legalized photocopy of national identity card</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange5($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files5; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage5(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile5(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">The duly signed Mohammed II-CITY University Thesis Charter</label>
+                <!-- Replace text input with file input -->
+                <input *ngIf="this.isCommittee==false&&this.isUser==true" type="file" class="form-control"  (change)="onFileChange6($event)" #selectFile multiple>
+                <div class="card-container" *ngFor="let file of files6; let i = index">
+                  <mat-card class="card">
+                    <mat-card-content style="display: flex; justify-content: space-between;">
+                      <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage6(i)">{{file.file.name}}</mat-card-title>
+                      <mat-icon *ngIf="this.isCommittee==false&&this.isUser==true" aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile6(i)"></mat-icon>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+
+
+              <div class="form-group mb-4">
                 <label for="#">Course<span class="astric">*</span></label>
-                <select class="form-control" placeholder="Select Course" formControlName="course">
+                <select   class="form-control" placeholder="Select Course" formControlName="course">
                   <option value="">Select an Option</option>
                   <option *ngFor="let data of courses" value="{{data.id}}">{{data.name}}</option>
                 </select>
                 <span *ngIf="course && course.invalid && course.touched" class="astric">Course is required</span>
               </div>
+
+
               <div class="form-group mb-4">
-                <label for="#">Full Name<span class="astric">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter Full Name" formControlName="name">
-                <span *ngIf="name && name.invalid && name.touched" class="astric">Full Name is required</span>
+                <label for="#">Establishment<span class="astric">*</span></label>
+                <input  type="text" class="form-control" placeholder="Enter establishment" formControlName="establishment">
+                <span *ngIf="establishment && establishment.invalid && establishment.touched" class="astric">Establishment is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Department<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter department" formControlName="department">
+                <span *ngIf="department && department.invalid && department.touched" class="astric">Department is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Research center name<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter research center name" formControlName="center">
+                <span *ngIf="center && center.invalid && center.touched" class="astric">Research center name is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Head of research center<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter head of research center" formControlName="head">
+                <span *ngIf="head && head.invalid && head.touched" class="astric">Head of research center is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Name of research structure<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter name of research structure" formControlName="structure">
+                <span *ngIf="structure && structure.invalid && structure.touched" class="astric">Name of research structure is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Head of research structure<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter head of research structure" formControlName="head_structure">
+                <span *ngIf="head_structure && head_structure.invalid && head_structure.touched" class="astric">Head of research structure is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Name and position of thesis supervisor<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter name and position of thesis supervisor" formControlName="supervisor">
+                <span *ngIf="supervisor && supervisor.invalid && supervisor.touched" class="astric">Name and position of thesis supervisor is required</span>
+              </div>
+              <p style="font-size: xx-large;">Personal Information</p>
+
+              <div class="form-group mb-4">
+                <label for="#">Candidate's full name<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter candidate's full name" formControlName="name">
+                <span *ngIf="name && name.invalid && name.touched" class="astric">Candidate's full name is required</span>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">SIGA code</label>
+                    <input type="text" class="form-control" placeholder="Enter SIGA code" formControlName="siga">
+                    <!-- <span *ngIf="name && name.invalid && name.touched" class="astric">Candidate's full name is required</span> -->
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">Apogee code</label>
+                    <input type="text" class="form-control" placeholder="Enter Apogee code" formControlName="apogee">
+                    <!-- <span *ngIf="name && name.invalid && name.touched" class="astric">Candidate's full name is required</span> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">Date of Birth<span class="astric">*</span></label>
+                    <input type="date" class="form-control" placeholder="Enter date of birth" formControlName="dob">
+                    <span *ngIf="dob && dob.invalid && dob.touched" class="astric">Date of birth is required</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">Place of Birth<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter place of birth" formControlName="place">
+                    <span *ngIf="place && place.invalid && place.touched" class="astric">Place of birth is required</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">Nationality<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Nationality" formControlName="nationality">
+                    <span *ngIf="nationality && nationality.invalid && nationality.touched" class="astric">Nationality is required</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">C.I.N / CR</label>
+                    <input type="text" class="form-control" placeholder="Enter C.I.N / CR" formControlName="cr">
+                    <!-- <span *ngIf="cr && cr.invalid && cr.touched" class="astric">Place of birth is required</span> -->
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group mb-4">
+                <label for="#">Address<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter address" formControlName="address">
+                <span *ngIf="address && address.invalid && address.touched" class="astric">Address is required</span>
+              </div>
+
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group mb-4">
+                    <label for="#">Marital Status<span class="astric">*</span></label><br>
+                    <input type="radio" id="single" name="marital" value="single" formControlName="marital">
+                    &nbsp;<label for="single">Single</label><br>
+                    <input type="radio" id="married" name="marital" value="married" formControlName="marital">
+                    &nbsp;<label for="married">Married</label><br>
+                    <input type="radio" id="other" name="marital" value="other" formControlName="marital">
+                    &nbsp;<label for="other">Other</label><br>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group mb-4">
+                    <label for="#">Status<span class="astric">*</span></label><br>
+                    <input type="radio" id="salaried" name="sal_status" value="salaried" formControlName="sal_status">
+                    &nbsp;<label for="salaried">Salaried</label><br>
+                    <input type="radio" id="non_salaried" name="sal_status" value="non_salaried" formControlName="sal_status">
+                    &nbsp;<label for="non_salaried">Non-Salaried</label><br>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group mb-4">
+                    <label for="#">Gender<span class="astric">*</span></label><br>
+                    <input type="radio" id="male" name="gender" value="male" formControlName="gender">
+                    &nbsp;<label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female" formControlName="gender">
+                    &nbsp;<label for="female">Female</label><br>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">Tel<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="phone">
+                    <span *ngIf="phone && phone.invalid && phone.touched" class="astric">Mobile Number is required</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">                  
+                  <div class="form-group mb-4">
+                  <label for="#">E-mail<span class="astric">*</span></label>
+                  <input type="text" class="form-control" placeholder="Enter Email Address" formControlName="email">
+                  <span *ngIf="email && email.errors?.['required'] && email.touched" class="astric">Email is required</span>
+                  <span *ngIf="email && email.errors?.['email'] && email.touched" class="astric">Invalid email address</span>
+                </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Last university degree (title, place and year obtained)<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter degree" formControlName="degree">
+                <span *ngIf="degree && degree.invalid && degree.touched" class="astric">Degree is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <input type="radio" id="single" name="q_degree" value="master" formControlName="q_degree">
+                &nbsp;<label for="single">Master</label><br>
+                <input type="radio" id="married" name="q_degree" value="specialized_master" formControlName="q_degree">
+                &nbsp;<label for="married">Specialized Master</label><br>
+                <input type="radio" id="married" name="q_degree" value="desa" formControlName="q_degree">
+                &nbsp;<label for="married">DESA</label><br>
+                <input type="radio" id="married" name="q_degree" value="dess" formControlName="q_degree">
+                &nbsp;<label for="married">DESS</label><br>
+                <input type="radio" id="other" name="q_degree" value="other" formControlName="q_degree">
+                &nbsp;<label for="other">Other</label>
+                <input *ngIf="isDegreeQualification()" type="text" class="form-control" placeholder="Enter degree qualification" formControlName="q_degree_other">
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Thesis subject<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter thesis subject" formControlName="thesis_subject">
+                <span *ngIf="thesis_subject && thesis_subject.invalid && thesis_subject.touched" class="astric">Thesis subject is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Name and position of co-supervisor<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter name and position of co-supervisor" formControlName="co_supervisor">
+                <span *ngIf="co_supervisor && co_supervisor.invalid && co_supervisor.touched" class="astric">Name and position of co-supervisor is required</span>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Address of co-supervisor's institution<span class="astric">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter address of co-supervisor's institution" formControlName="co_supervisor">
+                <span *ngIf="address_co_supervisor && address_co_supervisor.invalid && address_co_supervisor.touched" class="astric">Address of co-supervisor's institution is required</span>
+              </div>
+
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-4">
+                    <label for="#">Co-Supervisor's Tel<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="co_supervisor_phone">
+                    <span *ngIf="co_supervisor_phone && co_supervisor_phone.invalid && co_supervisor_phone.touched" class="astric">Co-Supervisor phone is required</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">                  
+                  <div class="form-group mb-4">
+                  <label for="#">Co-Supervisor's E-mail<span class="astric">*</span></label>
+                  <input type="text" class="form-control" placeholder="Enter Email Address" formControlName="co_supervisor_email">
+                  <span *ngIf="co_supervisor_email && co_supervisor_email.errors?.['required'] && co_supervisor_email.touched" class="astric">Co-Supervisor email is required</span>
+                  <span *ngIf="co_supervisor_email && co_supervisor_email.errors?.['email'] && co_supervisor_email.touched" class="astric">Invalid email address</span>
+                </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Co-supervision<span class="astric">*</span></label><br>
+                <input type="radio" id="yes" name="co_supervision" value="yes" formControlName="co_supervision">
+                &nbsp;<label for="yes">Yes</label><br>
+                <input type="radio" id="no" name="co_supervision" value="no" formControlName="co_supervision">
+                &nbsp;<label for="no">No</label><br>
+              </div>
+
+              <p style="font-size: xx-large;">Academic Information</p>
+              <div class="form-group mb-4">
+                <label for="#">Previous training from baccalauréat :</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Diploma</th>
+                      <th>Speciality</th>
+                      <th>Year</th>
+                      <th>Establishment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Baccalaureate</td>
+                        <td><input class="form-control" placeholder="Enter Speciality" type="text" formControlName="b_speciality"></td>
+                        <td><input class="form-control" placeholder="Enter Year" type="text" formControlName="b_year"></td>
+                        <td><input class="form-control" placeholder="Enter Establishment" type="text" formControlName="b_establishment"></td>
+                      </tr>
+                      <tr>
+                        <td>License</td>
+                        <td><input class="form-control" placeholder="Enter Speciality" type="text" formControlName="l_speciality"></td>
+                        <td><input class="form-control" placeholder="Enter Year" type="text" formControlName="l_year"></td>
+                        <td><input class="form-control" placeholder="Enter Establishment" type="text" formControlName="l_establishment"></td>
+                      </tr>
+                      <tr>
+                        <td>Master or DESA</td>
+                        <td><input class="form-control" placeholder="Enter Speciality" type="text" formControlName="m_speciality"></td>
+                        <td><input class="form-control" placeholder="Enter Year" type="text" formControlName="m_year"></td>
+                        <td><input class="form-control" placeholder="Enter Establishment" type="text" formControlName="m_establishment"></td>
+                      </tr>
+                      <tr>
+                        <td>Other</td>
+                        <td><input class="form-control" placeholder="Enter Speciality" type="text" formControlName="o_speciality"></td>
+                        <td><input class="form-control" placeholder="Enter Year" type="text" formControlName="o_year"></td>
+                        <td><input class="form-control" placeholder="Enter Establishment" type="text" formControlName="o_establishment"></td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Knowledge of languages :</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Language</th>
+                      <th>Reading</th>
+                      <th>Written</th>
+                      <th>Spoken</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td><input class="form-control" placeholder="Enter Language" formControlName="lang1" type="text"></td>
+                        <td>
+                          <select name="" class="form-control" formControlName="lang1_reading" id="">
+                            <option value="">--select here--</option>
+                            <option value="very good">Very good</option>
+                            <option value="good">Good</option>
+                            <option value="fairly good">Fiarly Good</option>
+                            <option value="elementary">elementary</option>
+                          </select>
+                        </td>
+                        <td><select name="" class="form-control" formControlName="lang1_writing" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                        <td><select name="" class="form-control" formControlName="lang1_spoken" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                      </tr>
+                      <tr>
+                        <td><input class="form-control" placeholder="Enter Language" formControlName="lang2" type="text"></td>
+                        <td>
+                          <select name="" class="form-control" formControlName="lang2_reading" id="">
+                            <option value="">--select here--</option>
+                            <option value="very good">Very good</option>
+                            <option value="good">Good</option>
+                            <option value="fairly good">Fiarly Good</option>
+                            <option value="elementary">elementary</option>
+                          </select>
+                        </td>
+                        <td><select name="" class="form-control" formControlName="lang2_writing" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                        <td><select name="" class="form-control" formControlName="lang2_spoken" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                      </tr>
+                      <tr>
+                        <td><input class="form-control" placeholder="Enter Language" formControlName="lang3" type="text"></td>
+                        <td>
+                          <select name="" class="form-control" formControlName="lang3_reading" id="">
+                            <option value="">--select here--</option>
+                            <option value="very good">Very good</option>
+                            <option value="good">Good</option>
+                            <option value="fairly good">Fiarly Good</option>
+                            <option value="elementary">elementary</option>
+                          </select>
+                        </td>
+                        <td><select name="" class="form-control" formControlName="lang3_writing" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                        <td><select name="" class="form-control" formControlName="lang3_spoken" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                      </tr>
+                      <tr>
+                        <td><input class="form-control" placeholder="Enter Language" formControlName="lang4" type="text"></td>
+                        <td>
+                          <select name="" class="form-control" formControlName="lang4_reading" id="">
+                            <option value="">--select here--</option>
+                            <option value="very good">Very good</option>
+                            <option value="good">Good</option>
+                            <option value="fairly good">Fiarly Good</option>
+                            <option value="elementary">elementary</option>
+                          </select>
+                        </td>
+                        <td><select name="" class="form-control" formControlName="lang4_writing" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                        <td><select name="" class="form-control" formControlName="lang4_spoken" id="">
+                          <option value="">--select here--</option>
+                          <option value="very good">Very good</option>
+                          <option value="good">Good</option>
+                          <option value="fairly good">Fiarly Good</option>
+                          <option value="elementary">elementary</option>
+                        </select></td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#" style="font-weight: bold;">List of publications or studies you have produced or been associated with. This list must be attached.</label>
+                <label for="#">Names and addresses of professors who knew you during your university studies. Please put a cross next to those who have written letters of recommendation:</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>First ans last name</th>
+                      <th>Title</th>
+                      <th>Address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input class="form-control" placeholder="Enter Name" type="text" formControlName="r1_name"></td>
+                      <td><input class="form-control" placeholder="Enter Title" type="text" formControlName="r1_title"></td>
+                      <td><input class="form-control" placeholder="Enter Address" type="text" formControlName="r1_address"></td>
+                    </tr>
+                    <tr>
+                      <td><input class="form-control" placeholder="Enter Name" type="text" formControlName="r2_name"></td>
+                      <td><input class="form-control" placeholder="Enter Title" type="text" formControlName="r2_title"></td>
+                      <td><input class="form-control" placeholder="Enter Address" type="text" formControlName="r2_address"></td>
+                    </tr>
+                    <tr>
+                      <td><input class="form-control" placeholder="Enter Name" type="text" formControlName="r3_name"></td>
+                      <td><input class="form-control" placeholder="Enter Title" type="text" formControlName="r3_title"></td>
+                      <td><input class="form-control" placeholder="Enter Address" type="text" formControlName="r3_address"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="#">Have you applied to other establishments?</label><br>
+                <input type="radio" id="yes" name="other_establishments" value="yes" formControlName="other_establishments">
+                &nbsp;<label for="yes">Yes</label><br>
+                <input type="radio" id="no" name="other_establishments" value="no" formControlName="other_establishments">
+                &nbsp;<label for="no">No</label><br>
+              </div>
+              <div class="form-group mb-4" *ngIf="isOtherEstablishments()">
+                <label for="#">If yes, which ones and in which year?</label><br>
+                <input class="form-control" placeholder="Enter establishments and year" formControlName="other_establishments_year" type="text">
               </div>
               <div class="form-group mb-4">
-                <label for="#">Email Address<span class="astric">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter Email Address" formControlName="email">
-                <span *ngIf="email && email.errors?.['required'] && email.touched" class="astric">Email is required</span>
-                <span *ngIf="email && email.errors?.['email'] && email.touched" class="astric">Invalid email address</span>
+                <label for="#">Has you application ever been refused?</label><br>
+                <input type="radio" id="yes" name="application_refused" value="yes" formControlName="application_refused">
+                &nbsp;<label for="yes">Yes</label><br>
+                <input type="radio" id="no" name="application_refused" value="no" formControlName="application_refused">
+                &nbsp;<label for="no">No</label><br>
               </div>
-              <div class="form-group mb-4">
-                <label for="#">Mobile Number<span class="astric">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="phone">
-                <span *ngIf="phone && phone.invalid && phone.touched" class="astric">Mobile Number is required</span>
+              <div class="form-group mb-4" *ngIf="isApplicationRefused()">
+                <label for="#">If yes,by which institution and for what reason?</label><br>
+                <input class="form-control" placeholder="Enter institution and reason" formControlName="application_refused_reason" type="text">
               </div>
-                <div class="form-group mb-4" >
+                <!-- <div class="form-group mb-4" >
                   <label for="#">Qualifications</label>
                   <input type="text" class="form-control" placeholder="Enter Qualifications (add atleast one qualification)" formControlName="qualification">
                   <button *ngIf="qualification?.value" class="btn btn-main mt-3 btn-extra-small" style="margin-bottom: 10px;" (click)="addQualification(qualification?.value)">Add</button>
@@ -45,24 +568,8 @@
                         </mat-card-content>
                     </mat-card>
                  </div>
-                </div> 
-                    
-                <div class="form-group mb-4">
-                    <label for="#">Documents</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files1; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)" (click)="downloadImage(i)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-                  
-
-                <button (click)="onSubmit()" [disabled]="wish.invalid || isQualificationsEmpty() || isFilesEmpty()" class="btn btn-main mt-3 btn-block">Register</button>
+                </div>  -->
+                <button  *ngIf="this.isCommittee==false&&this.isUser==true" (click)="onSubmit()" [disabled]=" isFilesEmpty() || isFiles1Empty() || isFiles2Empty() || isFiles3Empty() || isFiles4Empty() || isFiles5Empty() || isFiles6Empty()" class="btn btn-main mt-3 btn-block">Register</button>
               
             </div>
           </div>
@@ -71,4 +578,6 @@
     </div>
 
   </form>
+
+
 

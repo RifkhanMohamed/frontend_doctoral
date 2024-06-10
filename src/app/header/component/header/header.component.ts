@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit{
   arrayLength:any;
   array:any;
   wish: any[]=[];
-  isWish:boolean | undefined;
+  isWish=true;
   navigateHome(){
     this.router.navigate(['home']);
   }
@@ -41,12 +41,6 @@ export class HeaderComponent implements OnInit{
       this.wish=results;
       console.log(this.wish);
       
-      if(this.wish.length!=0){
-        this.isWish=true;
-       }
-       else{
-        this.isWish=false;
-       }
     });
 
   }

@@ -1,0 +1,47 @@
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-5">
+        <img src="{{ image }}" width="700" alt="">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div *ngFor="let data of list" >
+            <mat-card class="example-card1">
+ 
+                    <mat-card-content>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p>{{ data.name }}</p>
+                            <p><a href="mailto:{{ data.email }}"><i class="fa fa-envelope"></i>&nbsp;&nbsp;{{ data.email }}</a></p>
+                        </div>
+                    </mat-card-content>
+                <hr style="margin: 20px;">
+                <br>
+                <br>
+              </mat-card>
+              <br>
+              <br>
+        </div>
+
+    </div>
+    <div class="col-sm-5">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Laboratory Director</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <br>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Pr</p>
+                    <p>{{ director }}</p>
+                </div>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<br>
+<br>

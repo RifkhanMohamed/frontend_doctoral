@@ -26,6 +26,8 @@ const routes: Routes = [
   { path: 'computer-lab', loadChildren: () => import('./pages/labs/computer-lab/computer-lab.module').then(e => e.ComputerLabModule)},
   { path: 'maths-lab', loadChildren: () => import('./pages/labs/maths-lab/maths-lab.module').then(e => e.MathsLabModule)},
   { path: 'physical-lab', loadChildren: () => import('./pages/labs/physical-lab/physical-lab.module').then(e => e.PhysicalLabModule)},
+  { path: 'detail-lab', loadChildren: () => import('./pages/labs/detail-lab/detail-lab.module').then(e => e.DetailLabModule)},
+  { path: 'database', loadChildren: () => import('./pages/database/database.module').then(e => e.DatabaseModule)},
   {path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

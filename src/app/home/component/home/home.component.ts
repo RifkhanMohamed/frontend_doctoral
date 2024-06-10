@@ -36,17 +36,15 @@ isLoggedIn(){
   return this.loginService.isLoggedIn();
 }
 
-reDirect(course:any){
-  if(this.isLoggedIn()){
-    this.router.navigate(['/wish'],{ queryParams: { course: course } });
-  }
-  else{
-    this.router.navigate(['/login']);
-  }
-}
 
 reDirect1(){
-    this.router.navigate(['/wish']);
+    
+    if(this.isLoggedIn()){
+      this.router.navigate(['/wish']);
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
 }
 
 

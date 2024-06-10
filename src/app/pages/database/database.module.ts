@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DetailLabComponent } from './detail-lab/detail-lab.component';
+import { DatabaseComponent } from './database/database.component';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { Routes, RouterModule } from '@angular/router';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    component: DetailLabComponent
+    component: DatabaseComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    DetailLabComponent
+    DatabaseComponent
   ],
   imports: [
     CommonModule,
@@ -32,4 +32,4 @@ const routes: Routes = [
     MatGridListModule
   ]
 })
-export class DetailLabModule { }
+export class DatabaseModule { }

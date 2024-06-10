@@ -15,10 +15,17 @@
                 <th (click)="sort('course')">Course&nbsp;<i class="fa fa-sort"></i></th>
                 <th (click)="sort('email')">Email&nbsp;<i class="fa fa-sort"></i></th>
                 <th (click)="sort('phone')">Phone&nbsp;<i class="fa fa-sort"></i></th>
-                <th (click)="sort('qulaification')">Qualification&nbsp;<i class="fa fa-sort"></i></th>
-                <th>Files</th>
+                <!-- <th (click)="sort('qulaification')">Qualification&nbsp;<i class="fa fa-sort"></i></th> -->
+                <th>Department</th>
+                <th>Establishment</th>
                 <th>Status</th>
-                <th>Actions</th>
+
+                  <th *ngIf="this.isCommittee==true&&this.isUser==false">View</th>
+                  <th *ngIf="this.isCommittee==true&&this.isUser==false">Action</th>
+
+                  <th *ngIf="this.isCommittee==false&&this.isUser==true">Actions</th>
+
+
               </tr>
             </thead>
             <tbody>
@@ -26,21 +33,24 @@
                 <td>{{data.course.name}}</td>
                 <td>{{data.email}}</td>
                 <td>{{data.phone}}</td>
-                <td>{{data.qualification}}</td>
+                <!-- <td>{{data.qualification}}</td> -->
 
-                <div *ngFor="let data1 of data.files; let j = index">
-                    <td (click)="downloadImage(i,j)" style="cursor: pointer; ;">{{ data1.name }}</td>
-                </div> 
+                <td>{{data.department}}</td>
+                <td>{{data.establishment}}</td>
                 <td>{{ data.status }}</td> 
-                <td><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
+                  <td *ngIf="this.isCommittee==true&&this.isUser==false"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">visibility</mat-icon></td>
+                  <td *ngIf="this.isCommittee==true&&this.isUser==false"><button (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">validate</button></td>
+
+                  <td *ngIf="this.isCommittee==false&&this.isUser==true"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
+
               </tr>
             </tbody>
   
           </table>
 
           <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
-          <button *ngIf="!isDownload" (click)="onSubmit()" class="btn btn-small btn-main " style="float: right;">Submit</button>
-          <button *ngIf="isDownload" (click)="onDownload()" class="btn btn-small btn-secondary " style="float: right;">Download</button>
+          <button *ngIf="!isDownload&&this.isCommittee==false&&this.isUser==true" (click)="onSubmit()" class="btn btn-small btn-main " style="float: right;">Submit</button>
+          <button *ngIf="isDownload&&this.isCommittee==false&&this.isUser==true" (click)="onDownload()" class="btn btn-small btn-secondary " style="float: right;">Download</button>
         <br>
         <br>
     </div>
