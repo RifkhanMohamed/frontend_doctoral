@@ -16,4 +16,11 @@ export class RegisterService {
     
     return this.http.post<any>(this.base_url+"user/register",data);
   }
+
+
+  adminRegister(data:any): Observable<any> {
+    console.log(data);
+    
+    return this.http.post<any>(this.base_url+"user/admin/register",data);
+  }
 }

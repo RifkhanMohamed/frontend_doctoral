@@ -1,0 +1,148 @@
+<!-- <div class="row justify-content-center">
+<mat-stepper [linear]="isLinear" class="col-sm-8" #stepper>
+  <mat-step> -->
+    <form action="#" [formGroup]="personal">
+        <!-- <ng-template matStepLabel>Personal Details</ng-template> -->
+  
+        <div class="account section">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-sm-8">
+                <div class="login-form border p-5">
+                  <div class="text-center heading">
+                    <h2 class="mb-2">Register</h2>
+                    <!-- <p class="lead">Already have an account? <a routerLink="/login"> Login now</a></p> -->
+                  </div>
+        
+                    <div class="form-group mb-4">
+                      <label for="#">Full Name<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Full Name" formControlName="name">
+                      <span *ngIf="name && name.invalid && name.touched" class="astric">Full Name is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Email Address<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Email Address" formControlName="email">
+                      <span *ngIf="email && email.errors?.['required'] && email.touched" class="astric">Email is required</span>
+                      <span *ngIf="email && email.errors?.['email'] && email.touched" class="astric">Invalid email address</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Mobile Number<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="phone">
+                      <span *ngIf="phone && phone.invalid && phone.touched" class="astric">Mobile Number is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Address Line 1<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Address Line 1" formControlName="address_line1">
+                      <span *ngIf="address_line1 && address_line1.invalid && address_line1.touched" class="astric">Address Line 1 is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Address Line 2</label>
+                      <input type="text" class="form-control" placeholder="Enter Address Line 2" formControlName="address_line2">
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Street<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Street" formControlName="street">
+                      <span *ngIf="street && street.invalid && street.touched" class="astric">Street is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Post Code<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Post Code" formControlName="postcode">
+                      <span *ngIf="postcode && postcode.invalid && postcode.touched" class="astric">Postcode is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Town<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Town" formControlName="town">
+                      <span *ngIf="town && town.invalid && town.touched" class="astric">Town is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">County<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter County" formControlName="county">
+                      <span *ngIf="county && county.invalid && county.touched" class="astric">County is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Country<span class="astric">*</span></label>
+                      <input type="text" class="form-control" placeholder="Enter Country" formControlName="country">
+                      <span *ngIf="country && country.invalid && country.touched" class="astric">Country is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Password<span class="astric">*</span></label>
+                      <input type="password" class="form-control" placeholder="Enter Password" formControlName="password"> 
+                      <span *ngIf="password && password.invalid && password.touched" class="astric">Password is required</span>
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="#">Confirm Password<span class="astric">*</span></label>
+                      <input type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword"> 
+                      <span *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched" class="astric">Confirm Password is required</span>
+                    </div>
+        
+                    <button (click)="onSubmit()" [disabled]="personal.invalid" class="btn btn-main mt-3 btn-block">Register</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- <div>
+          <button mat-button matStepperNext>Next</button>
+        </div> -->
+      </form>
+    <!-- </mat-step>
+    <mat-step  label="Qualifications">
+      <form [formGroup]="qualification">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step  label="Documents">
+      <form [formGroup]="document"> -->
+  
+  
+  <!-- <div >
+    <h1 style="text-align: center">Upload your files here</h1>
+    
+  </div>
+  <div>
+    <mat-card style="width: 50vw; margin: auto"> -->
+      <!-- <mat-card-header>
+        <mat-card-title>File Upload</mat-card-title>
+      </mat-card-header> -->
+      <!-- <button mat-raised-button (click)="fileSelect.click()">Select File</button><br><br> -->
+      <!-- <div *ngFor="let file of selectedFiles" class="file-list">
+        <h4 *ngIf="file?.fileName.length > 0">Selected File: {{file?.fileName}}</h4>
+        <mat-progress-bar style="margin-top: 30px" mode="determinate" [value]="file?.uploadedPercent"></mat-progress-bar>
+        <button mat-flat-button><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteFile(file)">delete</mat-icon></button>
+      </div> -->
+      <!-- <h4 *ngIf="name.length > 0">Selected File: {{name}}</h4>
+        <input type="file" hidden #fileSelect name="largeFile" (change)="onFileSelect($event)" /> -->
+    
+        <!-- <button mat-raised-button (click)="uploadFiles()">Upload</button> -->
+        <!-- <br><br>
+  
+        <div id="drop_zone" (drop)="dropHandler($event)" (dragover)="dragOverHandler($event)">
+          <p>Drag and Deop File here...</p>
+        </div>
+    
+      <mat-card-content>
+        
+      </mat-card-content>
+    </mat-card>
+  </div> -->
+  
+  
+        <!-- <div>
+          <button mat-button matStepperPrevious>Back</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+  </div> -->
+  
+  

@@ -9,156 +9,6 @@
                     <h2 class="mb-2">PHD Registration 1<sup>st</sup> Year</h2>
                   </div>
         
-                  <div class="form-group mb-4">
-                    <label for="#">Original diplomas: Baccalauréat, Licence and Master</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Certified photocopy of baccalaureate and university diplomas</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange1($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files1; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile1(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Bachelor's and Master's transcripts</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange2($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files2; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile2(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">4 Passport-size photographs</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange3($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files3; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile3(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Birth certificate</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange4($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files4; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile4(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Legalized photocopy of national identity card</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange5($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files5; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile5(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">The duly signed Mohammed II-CITY University Thesis Charter</label>
-                    <!-- Replace text input with file input -->
-                    <input type="file" class="form-control"  (change)="onFileChange6($event)" #selectFile multiple>
-                    <div class="card-container" *ngFor="let file of files6; let i = index">
-                      <mat-card class="card">
-                        <mat-card-content style="display: flex; justify-content: space-between;">
-                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
-                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile6(i)"></mat-icon>
-                        </mat-card-content>
-                      </mat-card>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group mb-4">
-                    <label for="#">Course<span class="astric">*</span></label>
-                    <select class="form-control" placeholder="Select Course" formControlName="course">
-                      <option value="">Select an Option</option>
-                      <option *ngFor="let data of courses" value="{{data.id}}">{{data.name}}</option>
-                    </select>
-                    <span *ngIf="course && course.invalid && course.touched" class="astric">Course is required</span>
-                  </div>
-
-
-                  <div class="form-group mb-4">
-                    <label for="#">Establishment<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter establishment" formControlName="establishment">
-                    <span *ngIf="establishment && establishment.invalid && establishment.touched" class="astric">Establishment is required</span>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Department<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter department" formControlName="department">
-                    <span *ngIf="department && department.invalid && department.touched" class="astric">Department is required</span>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Research center name<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter research center name" formControlName="center">
-                    <span *ngIf="center && center.invalid && center.touched" class="astric">Research center name is required</span>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Head of research center<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter head of research center" formControlName="head">
-                    <span *ngIf="head && head.invalid && head.touched" class="astric">Head of research center is required</span>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Name of research structure<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter name of research structure" formControlName="structure">
-                    <span *ngIf="structure && structure.invalid && structure.touched" class="astric">Name of research structure is required</span>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Head of research structure<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter head of research structure" formControlName="head_structure">
-                    <span *ngIf="head_structure && head_structure.invalid && head_structure.touched" class="astric">Head of research structure is required</span>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="#">Name and position of thesis supervisor<span class="astric">*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter name and position of thesis supervisor" formControlName="supervisor">
-                    <span *ngIf="supervisor && supervisor.invalid && supervisor.touched" class="astric">Name and position of thesis supervisor is required</span>
-                  </div>
                   <p style="font-size: xx-large;">Personal Information</p>
 
                   <div class="form-group mb-4">
@@ -340,6 +190,61 @@
                     <input type="radio" id="no" name="co_supervision" value="no" formControlName="co_supervision">
                     &nbsp;<label for="no">No</label><br>
                   </div>
+                  
+
+
+                  <div class="form-group mb-4">
+                    <label for="#">Course<span class="astric">*</span></label>
+                    <select class="form-control" placeholder="Select Course" formControlName="course">
+                      <option value="">Select an Option</option>
+                      <option *ngFor="let data of courses" value="{{data.id}}">{{data.name}}</option>
+                    </select>
+                    <span *ngIf="course && course.invalid && course.touched" class="astric">Course is required</span>
+                  </div>
+
+
+                  <div class="form-group mb-4">
+                    <label for="#">Establishment<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter establishment" formControlName="establishment">
+                    <span *ngIf="establishment && establishment.invalid && establishment.touched" class="astric">Establishment is required</span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Department<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter department" formControlName="department">
+                    <span *ngIf="department && department.invalid && department.touched" class="astric">Department is required</span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Research center name<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter research center name" formControlName="center">
+                    <span *ngIf="center && center.invalid && center.touched" class="astric">Research center name is required</span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Head of research center<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter head of research center" formControlName="head">
+                    <span *ngIf="head && head.invalid && head.touched" class="astric">Head of research center is required</span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Name of research structure<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter name of research structure" formControlName="structure">
+                    <span *ngIf="structure && structure.invalid && structure.touched" class="astric">Name of research structure is required</span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Head of research structure<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter head of research structure" formControlName="head_structure">
+                    <span *ngIf="head_structure && head_structure.invalid && head_structure.touched" class="astric">Head of research structure is required</span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Name and position of thesis supervisor<span class="astric">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter name and position of thesis supervisor" formControlName="supervisor">
+                    <span *ngIf="supervisor && supervisor.invalid && supervisor.touched" class="astric">Name and position of thesis supervisor is required</span>
+                  </div>
+
 
                   <p style="font-size: xx-large;">Academic Information</p>
                   <div class="form-group mb-4">
@@ -554,6 +459,104 @@
                   <div class="form-group mb-4" *ngIf="isApplicationRefused()">
                     <label for="#">If yes,by which institution and for what reason?</label><br>
                     <input class="form-control" placeholder="Enter institution and reason" formControlName="application_refused_reason" type="text">
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Original diplomas: Baccalauréat, Licence and Master</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Certified photocopy of baccalaureate and university diplomas</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange1($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files1; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile1(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Bachelor's and Master's transcripts</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange2($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files2; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile2(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">4 Passport-size photographs</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange3($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files3; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile3(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Birth certificate</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange4($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files4; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile4(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">Legalized photocopy of national identity card</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange5($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files5; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile5(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="#">The duly signed Mohammed II-CITY University Thesis Charter</label>
+                    <!-- Replace text input with file input -->
+                    <input type="file" class="form-control"  (change)="onFileChange6($event)" #selectFile multiple>
+                    <div class="card-container" *ngFor="let file of files6; let i = index">
+                      <mat-card class="card">
+                        <mat-card-content style="display: flex; justify-content: space-between;">
+                          <mat-card-title style="color: rgb(100, 33, 33)">{{file.file.name}}</mat-card-title>
+                          <mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete" style="color: red;" (click)="removeFile6(i)"></mat-icon>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
                   </div>
                     <!-- <div class="form-group mb-4" >
                       <label for="#">Qualifications</label>

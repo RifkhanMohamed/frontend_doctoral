@@ -4,6 +4,7 @@ import { LoginService } from 'src/app/login/service/login.service';
 import { WishService } from 'src/app/wish/service/wish.service';
 import * as pdfMake from 'pdfmake/build/pdfMake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts'; 
+import { ModifyWishService } from '../../service/modify-wish.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -14,7 +15,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 export class ModifyWishComponent {
   isCommittee=false;
   isUser=false;
-  constructor(private loginService:LoginService,private router: Router,private wishService:WishService){
+  constructor(private loginService:LoginService,private router: Router,private wishService:WishService,private modifyService:ModifyWishService){
     this.getWish();
     if(JSON.parse(localStorage.getItem("user")|| '{}').role[0].role_name=="committee"){
       this.isCommittee=true;
@@ -29,6 +30,20 @@ export class ModifyWishComponent {
       this.isUser=false;
     }
   }
+
+
+  sendInvitation(email:any,name:any) {
+    const to = email;
+    const subject = 'Invitation to the competition';
+    const text = 'Hi '+name+' You have been invited to the competition. Please check your account for more details.';
+
+    this.modifyService.sendEmail(to, subject, text).subscribe(response => {
+      console.log('Email sent successfully', response);
+    }, error => {
+      console.error('Error sending email', error);
+    });
+  }
+
   wish: any=[];
   key: string='id';
   reverse:boolean=false;

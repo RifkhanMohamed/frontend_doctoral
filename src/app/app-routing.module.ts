@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'physical-lab', loadChildren: () => import('./pages/labs/physical-lab/physical-lab.module').then(e => e.PhysicalLabModule)},
   { path: 'detail-lab', loadChildren: () => import('./pages/labs/detail-lab/detail-lab.module').then(e => e.DetailLabModule)},
   { path: 'database', loadChildren: () => import('./pages/database/database.module').then(e => e.DatabaseModule)},
+  { path: 'admin-register', loadChildren: () => import('./admin/admin.module').then(e => e.AdminModule)},
   {path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
