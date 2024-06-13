@@ -29,6 +29,8 @@ export class LoginComponent {
   login(){    
     this.loginService.login(this.loginForm.value).subscribe(
     (res:any)=>{
+      console.log(res);
+      
       this.loginService.setRoles(res.user.role);
       this.loginService.setUserDetails(res.user);
       this.loginService.setToken(res.jwtToken);
