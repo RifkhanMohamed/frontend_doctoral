@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
+  { path: 'forbidden', loadChildren: () => import('./forbidden/forbidden.module').then(e => e.ForbiddenModule)},
   { path: 'home', loadChildren: () => import('./home/home.module').then(e => e.HomeModule)},
   { path: 'header', loadChildren: () => import('./header/header.module').then(e => e.HeaderModule)},
   { path: 'footer', loadChildren: () => import('./footer/footer.module').then(e => e.FooterModule)},
@@ -28,7 +30,14 @@ const routes: Routes = [
   { path: 'physical-lab', loadChildren: () => import('./pages/labs/physical-lab/physical-lab.module').then(e => e.PhysicalLabModule)},
   { path: 'detail-lab', loadChildren: () => import('./pages/labs/detail-lab/detail-lab.module').then(e => e.DetailLabModule)},
   { path: 'database', loadChildren: () => import('./pages/database/database.module').then(e => e.DatabaseModule)},
-  { path: 'admin-register', loadChildren: () => import('./admin/admin.module').then(e => e.AdminModule)},
+  { path: 'admin-register', loadChildren: () => import('./admin/admin.module').then(e => e.AdminModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee','dean','director','laboratory_manager','service_admin','structure_manager','thesis_director']}},
+  { path: 'users', loadChildren: () => import('./users/users.module').then(e => e.UsersModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee','dean','director','laboratory_manager','service_admin','structure_manager','thesis_director']}},
+  { path: 'admin-home', loadChildren: () => import('./admin-home/admin-home.module').then(e => e.AdminHomeModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee','dean','director','laboratory_manager','service_admin','structure_manager','thesis_director']}},
+  { path: 'admin-pre-register', loadChildren: () => import('./admin-pre-register/admin-pre-register.module').then(e => e.AdminPreRegisterModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee']}},
+  { path: 'admin-pre-select', loadChildren: () => import('./admin-pre-selected/admin-pre-selected.module').then(e => e.AdminPreSelectedModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee']}},
+  { path: 'admin-post-competition', loadChildren: () => import('./admin-post-competition/admin-post-competition.module').then(e => e.AdminPostCompetitionModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee','thesis_director']}},
+  { path: 'admin-thesis-director-validated', loadChildren: () => import('./admin-thesis-director-validated/admin-thesis-director-validated.module').then(e => e.AdminThesisDirectorValidatedModule),canActivate:[AuthGuard],data:{roles:['super_admin','structure_manager']}},
+  
   {path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

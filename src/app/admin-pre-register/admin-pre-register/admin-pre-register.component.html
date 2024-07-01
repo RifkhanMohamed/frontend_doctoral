@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid page">
+<div class="container-fluid page" style="height: 93vh; overflow-y: auto;">
 
     <div class="text-center heading">
         <h1 class="mb-2">Registred Wishes</h1>
@@ -19,13 +19,8 @@
                 <th>Department</th>
                 <th>Establishment</th>
                 <th>Status</th>
-
-                  <th *ngIf="this.isCommittee==true&&this.isUser==false">View</th>
-                  <!-- <th *ngIf="this.isCommittee==true&&this.isUser==false">Action</th> -->
-
-                  <th *ngIf="this.isUser==true">Actions</th>
-
-
+                  <th *ngIf="this.isCommittee==true||isSuperAdmin">View</th>
+                  <th *ngIf="this.isCommittee==true||isSuperAdmin">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -38,19 +33,14 @@
                 <td>{{data.department}}</td>
                 <td>{{data.establishment}}</td>
                 <td>{{ data.status }}</td> 
-                  <td *ngIf="this.isCommittee==true&&this.isUser==false"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">visibility</mat-icon></td>
-                  <!-- <td *ngIf="this.isCommittee==true&&this.isUser==false"><button (click)="sendInvitation(data.email,data.name)" style="color: blue; cursor: pointer;">validate</button></td> -->
-
-                  <td *ngIf="this.isUser==true&&data.status=='enrolled'"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
-
+                  <td *ngIf="this.isCommittee==true||isSuperAdmin"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">visibility</mat-icon></td>
+                  <td *ngIf="this.isCommittee==true||isSuperAdmin"><button (click)="sendInvitation(data.email,data.name,'pre_selected')" style="color: blue; cursor: pointer;">validate</button></td>
               </tr>
             </tbody>
   
           </table>
 
           <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
-          <button *ngIf="!isDownload&&this.isCommittee==false&&this.isUser==true" (click)="onSubmit()" class="btn btn-small btn-main " style="float: right;">Submit</button>
-          <button *ngIf="isDownload&&this.isCommittee==false&&this.isUser==true" (click)="onDownload()" class="btn btn-small btn-secondary " style="float: right;">Download</button>
         <br>
         <br>
     </div>

@@ -1,0 +1,54 @@
+<mat-nav-list>
+    <div class="logo py-4">
+      <img src="../../../../assets/images/logo.jpeg" alt="Company Logo" />
+    </div>
+    <mat-divider></mat-divider>
+    <h2 *ngIf="isSuperAdmin" matSubheader class="mt-1" style="color: white; font-size: 30px; margin-left: 60px;">Admin</h2>
+    <h2 *ngIf="isCommittee" matSubheader class="mt-1" style="color: white; font-size: 20px; margin-left: 30px;">Commission Member</h2>
+    <h2 *ngIf="isThesisDirector" matSubheader class="mt-1" style="color: white; font-size: 30px; margin-left: 90px;">Thesis Director</h2>
+    
+    <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-home">
+      <mat-icon>home</mat-icon>Home
+    </a>
+    
+    <ng-container *ngIf="isSuperAdmin || isCommittee || isThesisDirector || isStructureManager">
+      <br><br>
+      <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/users">
+        <mat-icon>account_circle</mat-icon>Students
+      </a>
+    </ng-container>
+  
+    <ng-container *ngIf="isSuperAdmin || isCommittee">
+      <br><br>
+      <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-pre-register">
+        <mat-icon>account_circle</mat-icon>Pre Registered Students
+      </a>
+      <br><br>
+      <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-pre-select">
+        <mat-icon>account_circle</mat-icon>Pre Selected Students
+      </a>
+    </ng-container>
+  
+    <ng-container *ngIf="isSuperAdmin || isCommittee || isThesisDirector">
+      <br><br>
+      <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-post-competition">
+        <mat-icon>account_circle</mat-icon>Post Competition
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isSuperAdmin || isStructureManager">
+        <br><br>
+        <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-thesis-director-validated">
+          <mat-icon>account_circle</mat-icon>Thesis Director Validated
+        </a>
+      </ng-container>
+  
+    <ng-container *ngIf="isSuperAdmin">
+      <br><br>
+      <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-register">
+        <mat-icon>account_circle</mat-icon>Admin Register
+      </a>
+    </ng-container>
+  
+  </mat-nav-list>
+  

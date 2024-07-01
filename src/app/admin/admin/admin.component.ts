@@ -31,12 +31,17 @@ export class AdminComponent {
     postcode:new FormControl('',[Validators.required]),
     town:new FormControl('',[Validators.required]),
     county:new FormControl('',[Validators.required]),
-    country:new FormControl('',[Validators.required])
+    country:new FormControl('',[Validators.required]),
+    role:new FormControl('',[Validators.required]),
   });
 
   
   get name(){
     return this.personal.get('name');
+  }
+
+  get role(){
+    return this.personal.get('role');
   }
   
   get email(){
@@ -89,6 +94,9 @@ export class AdminComponent {
       "email":this.personal.get('email')?.value,
       "phone":this.personal.get('phone')?.value,
       "password":this.personal.get('password')?.value,
+      "role":[{
+        "role_name":this.personal.get('role')?.value
+      }],
       "address":{
         "address_line1":this.personal.get('address_line1')?.value,
         "address_line2":this.personal.get('address_line2')?.value,
@@ -104,7 +112,7 @@ export class AdminComponent {
       console.log(data);
         
       this.toastr.success("Welcome to the DMS!")
-      this.router.navigate(['/login']);
+      this.router.navigate(['/admin-home']);
     })
     .catch(e=>{
       this.toastr.error("This username already exist!")

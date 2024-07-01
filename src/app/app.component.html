@@ -1,3 +1,32 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer id="footer"></app-footer> 
+<div *ngIf="!(loginService.roleMatch(['super_admin']) 
+                || loginService.roleMatch(['committee'])
+                || loginService.roleMatch(['dean'])
+                || loginService.roleMatch(['director'])
+                || loginService.roleMatch(['laboratory_manager'])
+                || loginService.roleMatch(['service_admin'])
+                || loginService.roleMatch(['structure_manager'])
+                || loginService.roleMatch(['thesis_director']))">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <app-footer id="footer"></app-footer> 
+</div>
+
+
+<div *ngIf="(loginService.roleMatch(['super_admin']) 
+|| loginService.roleMatch(['committee'])
+|| loginService.roleMatch(['dean'])
+|| loginService.roleMatch(['director'])
+|| loginService.roleMatch(['laboratory_manager'])
+|| loginService.roleMatch(['service_admin'])
+|| loginService.roleMatch(['structure_manager'])
+|| loginService.roleMatch(['thesis_director']))">
+    <mat-drawer-container>
+        <mat-drawer mode="side" [opened]="sideBarOpen">
+          <app-admin-sidenav></app-admin-sidenav>
+        </mat-drawer>
+        <mat-drawer-content>
+          <app-admin-header (toggleSidebarForMe)="sideBarToggler()"></app-admin-header>
+          <router-outlet></router-outlet>
+        </mat-drawer-content>
+      </mat-drawer-container>
+</div>

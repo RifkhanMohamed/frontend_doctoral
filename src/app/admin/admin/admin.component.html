@@ -65,6 +65,20 @@
                       <span *ngIf="country && country.invalid && country.touched" class="astric">Country is required</span>
                     </div>
                     <div class="form-group mb-4">
+                      <label for="#">Role<span class="astric">*</span></label>
+                      <select name="role" id="" class="form-control" formControlName="role">
+                        <option value="">--select--</option>
+                        <option value="committee">Commission Member</option>
+                        <option value="dean">Dean</option>
+                        <option value="director">Director</option>
+                        <option value="laboratory_manager">Laboratory Manager</option>
+                        <option value="service_admin">Service Administrator</option>
+                        <option value="structure_manager">Structure Manager</option>
+                        <option value="thesis_director">Thesis Director</option>
+                      </select>
+                      <span *ngIf="role && role.invalid && role.touched" class="astric">Role is required</span>
+                    </div>
+                    <div class="form-group mb-4">
                       <label for="#">Password<span class="astric">*</span></label>
                       <input type="password" class="form-control" placeholder="Enter Password" formControlName="password"> 
                       <span *ngIf="password && password.invalid && password.touched" class="astric">Password is required</span>

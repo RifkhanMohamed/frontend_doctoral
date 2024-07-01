@@ -1,0 +1,20 @@
+<mat-toolbar>
+    <mat-toolbar-row class="justify-content-between">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="row mr-2 ml-auto ">
+        <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
+            <li class="list-inline-item nav-item dropdown dropdown-slide">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" id="navbarDropdown5" aria-expanded="false" data-hover="dropdown">
+                <i class="tf-ion-ios-person mr-3"></i></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                  <li><a *ngIf="!isLoggedIn()" routerLink="/login">Login</a></li>
+                  <li><a *ngIf="isLoggedIn()" style="color: red; cursor: pointer;"  (click)="logout()">Logout</a></li>
+                </ul>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>

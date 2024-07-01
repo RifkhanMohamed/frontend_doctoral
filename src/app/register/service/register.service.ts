@@ -23,4 +23,24 @@ export class RegisterService {
     
     return this.http.post<any>(this.base_url+"user/admin/register",data);
   }
+
+  getUserCount(): Observable<any>{
+    return this.http.get<any>(this.base_url+"user/get/users/count");
+  }
+
+  getUserCountStatus(status:any): Observable<any>{
+    return this.http.get<any>(this.base_url+"user/get/users/count/status/"+status);
+  }
+
+  getPreUserCount():Observable<any>{
+    return this.http.get<any>(this.base_url+"user/get/preUsers/count");
+  }
+
+  getPreSelectedStudents():Observable<any>{
+    return this.http.get<any>(this.base_url+"user/get/preSelectedUsers/count");
+  }
+
+  getAllStudents():Observable<any>{
+    return this.http.get<any>(this.base_url+"user/get/all/students");
+  }
 }

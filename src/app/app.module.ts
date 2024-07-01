@@ -18,6 +18,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { AdminSidenavModule } from './admin-sidenav/admin-sidenav.module';
+import { AuthInterceptor } from './_auth/auth.interceptor';
+import { AuthGuard } from './_auth/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginService } from './login/service/login.service';
+import { AdminHeaderModule } from "./admin-header/admin-header.module";
 @NgModule({
   declarations: [
     AppComponent
@@ -40,9 +46,19 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatFormFieldModule,
     MatButtonModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    AdminSidenavModule,
+    AdminHeaderModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    },
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

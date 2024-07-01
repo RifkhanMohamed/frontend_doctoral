@@ -25,11 +25,28 @@ export class WishService {
     return this.http.put<any>(this.base_url+"wish/update/status/"+user,null,{ responseType: 'text' as 'json' });
   }
 
+  wishUpdateStatusPreSelectedByCommission(user:any,status:any): Observable<any>{
+    return this.http.put<any>(this.base_url+"wish/update/status/selected/"+user+'/'+status,null,{ responseType: 'text' as 'json' });
+  }
+
+  
+
   wishGetById(id:any): Observable<any>{
     return this.http.get<any>(this.base_url+"wish/get/id/"+id);
   }
 
   wishGetAll(): Observable<any>{
     return this.http.get<any>(this.base_url+"wish/get/all");
+  }
+
+  wishGetAllStatus(status:any): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/all/status/"+status);
+  }
+  wishGetAllStatusResults(): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/all/status/results");
+  }
+
+  wishGetAllStatusResultsStructure(): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/all/status/results/structure");
   }
 }

@@ -35,12 +35,12 @@ export class LoginComponent {
       this.loginService.setUserDetails(res.user);
       this.loginService.setToken(res.jwtToken);
       const role=res.user.role[0];
-      if(role.role_name==='committee'){
-        this.router.navigate(['/modify-wish']);
+      if(role.role_name==='user'){
+        this.router.navigate(['/home']);
       }
       else{
         // if(JSON.parse(localStorage.getItem("cart")|| '{}').length==0||JSON.parse(localStorage.getItem("cart")|| '{}').length==undefined){
-          this.router.navigate(['/home']);
+          this.router.navigate(['/admin-home']);
         // }
         // else{
         //   this.router.navigate(['/cart']);

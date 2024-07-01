@@ -1,0 +1,36 @@
+
+
+<div class="container-fluid page" style="height: 93vh; overflow-y: auto;">
+
+    <div class="text-center heading">
+        <h1 class="mb-2">Registred Students</h1>
+      </div>
+
+    <div class="page__content shadow p-3 position-relative">
+        <nav class="navbar">
+          </nav>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th (click)="sort('name')">Name&nbsp;<i class="fa fa-sort"></i></th>
+                <th (click)="sort('email')">Email&nbsp;<i class="fa fa-sort"></i></th>
+                <th (click)="sort('phone')">Phone&nbsp;<i class="fa fa-sort"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of students | orderBy:key:reverse | paginate: {itemsPerPage:10,currentPage:p}; let i = index">
+                <td>{{data.name}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.phone}}</td>
+              </tr>
+            </tbody>
+  
+          </table>
+
+          <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
+        <br>
+        <br>
+    </div>
+
+</div>
+

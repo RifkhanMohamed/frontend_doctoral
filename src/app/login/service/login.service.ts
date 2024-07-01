@@ -53,24 +53,43 @@ export class LoginService {
     return this.getRoles()&&this.getToken();
   }
 
-  public roleMatch(allowedRoles:any):boolean{
-    let isMatch=false;
-    const userRoles:any=this.getRoles();
-    if(userRoles!=null&&userRoles){
-      for(let i=0;i<userRoles.length;i++){
-        for(let j=0;j<allowedRoles.length;j++){
-          if(userRoles[i].role_name===allowedRoles[j]){
-            isMatch=true;
-            return isMatch;
+  // public roleMatch(allowedRoles:any):boolean{
+  //   let isMatch=false;
+  //   const userRoles:any=this.getRoles();
+  //   if(userRoles!=null&&userRoles){
+  //     for(let i=0;i<userRoles.length;i++){
+  //       for(let j=0;j<allowedRoles.length;j++){
+  //         if(userRoles[i].role_name===allowedRoles[j]){
+  //           isMatch=true;
+  //           return isMatch;
+  //         }
+  //         else{
+  //           return isMatch;
+  //         }
+  //       }
+  //     }
+  //   }
+  //     return isMatch;
+  // }
+  
+  public roleMatch(allowedRoles: any[]): boolean {
+    let isMatch = false;
+    const userRoles: any[] = this.getRoles();
+    if (userRoles && userRoles.length) {
+      for (let i = 0; i < userRoles.length; i++) {
+        for (let j = 0; j < allowedRoles.length; j++) {
+          if (userRoles[i].role_name === allowedRoles[j]) {
+            isMatch = true;
+            break; // Exit inner loop if a match is found
           }
-          else{
-            return isMatch;
-          }
+        }
+        if (isMatch) {
+          break; // Exit outer loop if a match is found
         }
       }
     }
-    
-      return isMatch;
-    
+    return isMatch;
   }
+  
+
 }
