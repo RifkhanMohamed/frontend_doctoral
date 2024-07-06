@@ -15,6 +15,12 @@ export class AdminHomeComponent implements OnInit{
     this.getPreSelectedStudentsFail();
     this.getPreSelectedStudentsValidated();
     this.getPreSelectedStudentsRejected();
+    this.getPreSelectedStudentsStructureConfirmed();
+    this.getPreSelectedStudentsStructureRejected();
+    this.getPreSelectedStudentsDirectorConfirmed();
+    this.getPreSelectedStudentsDirectorRejected();
+    this.getPreSelectedStudentsLabConfirmed();
+    this.getPreSelectedStudentsLabRejected();
   }
   constructor(private registerService:RegisterService){}
   studentsCount:any;
@@ -26,6 +32,10 @@ export class AdminHomeComponent implements OnInit{
   thesisDirectorRejectedStudents:any;
   structureManagerConfirmed:any;
   structureManagerRejected:any;
+  directorConfirmed:any;
+  directorRejected:any;
+  labValidated:any;
+  labRejected:any;
   getRegisterStudents(){
     this.registerService.getUserCount().subscribe((results)=>{
       this.studentsCount=results;
@@ -69,13 +79,37 @@ export class AdminHomeComponent implements OnInit{
 
   getPreSelectedStudentsStructureConfirmed(){
     this.registerService.getUserCountStatus('structure_manager_confirmed').subscribe((results)=>{
-      this.thesisDirectorValidatedStudents=results;
+      this.structureManagerConfirmed=results;
     });
   }
 
   getPreSelectedStudentsStructureRejected(){
     this.registerService.getUserCountStatus('structure_manager_rejected').subscribe((results)=>{
-      this.thesisDirectorRejectedStudents=results;
+      this.structureManagerRejected=results;
+    });
+  }
+
+  getPreSelectedStudentsDirectorConfirmed(){
+    this.registerService.getUserCountStatus('final_validation_by_director').subscribe((results)=>{
+      this.directorConfirmed=results;
+    });
+  }
+
+  getPreSelectedStudentsDirectorRejected(){
+    this.registerService.getUserCountStatus('final_rejection_by_director').subscribe((results)=>{
+      this.directorRejected=results;
+    });
+  }
+
+  getPreSelectedStudentsLabConfirmed(){
+    this.registerService.getUserCountStatus('exemptions_validated').subscribe((results)=>{
+      this.labValidated=results;
+    });
+  }
+
+  getPreSelectedStudentsLabRejected(){
+    this.registerService.getUserCountStatus('exemptions_rejected').subscribe((results)=>{
+      this.labRejected=results;
     });
   }
 }

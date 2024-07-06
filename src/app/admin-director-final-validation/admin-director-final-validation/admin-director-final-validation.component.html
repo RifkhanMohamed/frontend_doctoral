@@ -1,9 +1,9 @@
 
 
-<div class="container-fluid page">
+<div class="container-fluid page" style="height: 93vh; overflow-y: auto;">
 
     <div class="text-center heading">
-        <h1 class="mb-2">Registred Wishes</h1>
+        <h1 class="mb-2">Final Validation</h1>
       </div>
 
     <div class="page__content shadow p-3 position-relative">
@@ -19,13 +19,9 @@
                 <th>Department</th>
                 <th>Establishment</th>
                 <th>Status</th>
-
-                  <th *ngIf="this.isCommittee==true&&this.isUser==false">View</th>
-                  <!-- <th *ngIf="this.isCommittee==true&&this.isUser==false">Action</th> -->
-
-                  <th *ngIf="this.isUser==true">Actions</th>
-
-
+                  <th *ngIf="isDirector||isSuperAdmin">View</th>
+                  <th *ngIf="isDirector||isSuperAdmin">Action</th>
+                  <th *ngIf="isDirector||isSuperAdmin">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -38,19 +34,15 @@
                 <td>{{data.department}}</td>
                 <td>{{data.establishment}}</td>
                 <td>{{ data.status }}</td> 
-                  <td *ngIf="this.isCommittee==true&&this.isUser==false"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">visibility</mat-icon></td>
-                  <!-- <td *ngIf="this.isCommittee==true&&this.isUser==false"><button (click)="sendInvitation(data.email,data.name)" style="color: blue; cursor: pointer;">validate</button></td> -->
-
-                  <td *ngIf="this.isUser==true&&data.status=='enrolled'"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">edit</mat-icon></td>
-
+                  <td *ngIf="isDirector||isSuperAdmin"><mat-icon (click)="reDirect(data.id)" style="color: blue; cursor: pointer;">visibility</mat-icon></td>
+                  <td *ngIf="isDirector||isSuperAdmin"><button (click)="sendInvitation(data.email,data.name,'final_validation_by_director')" style="color: green; cursor: pointer;">Confirm</button></td>
+                  <td *ngIf="isDirector||isSuperAdmin"><button (click)="sendInvitation(data.email,data.name,'final_rejection_by_director')" style="color: red; cursor: pointer;">Reject</button></td>
               </tr>
             </tbody>
   
           </table>
-
+          <button  (click)="exportToExcel()" class="btn btn-small btn-secondary " style="float: right;">Download Excel</button>
           <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
-          <button *ngIf="!isDownload&&this.isUser==true" (click)="onSubmit()" class="btn btn-small btn-main " style="float: right;">Submit</button>
-          <button *ngIf="isDownload&&this.isUser==true" (click)="onDownload()" class="btn btn-small btn-secondary " style="float: right;">Download</button>
         <br>
         <br>
     </div>

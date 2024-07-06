@@ -115,7 +115,9 @@ wish=new FormGroup({
   other_establishments:new FormControl(''),
   other_establishments_year:new FormControl(''),
   application_refused:new FormControl(''),
-  application_refused_reason:new FormControl('')
+  application_refused_reason:new FormControl(''),
+  cotutelle:new FormControl('',[Validators.required]),
+  cotutelle_reason:new FormControl('')
 });
 
 
@@ -216,6 +218,10 @@ get co_supervisor_email(){
   return this.wish.get('co_supervisor_email');
 }
 
+get cotutelle(){
+  return this.wish.get('cotutelle');
+}
+
 onSubmit(){
 
   let data={
@@ -301,7 +307,9 @@ onSubmit(){
     "otherestablishments":this.wish.get('other_establishments')?.value,
     "otherestablishmentsyear":this.wish.get('other_establishments_year')?.value,
     "applicationrefused":this.wish.get('application_refused')?.value,
-    "applicationrefusedreason":this.wish.get('application_refused_reason')?.value
+    "applicationrefusedreason":this.wish.get('application_refused_reason')?.value,
+    "cotutelle":this.wish.get('cotutelle')?.value,
+    "cotutellereason":this.wish.get('cotutelle_reason')?.value
   }
 
   const formData=new FormData();
@@ -557,6 +565,15 @@ isApplicationRefused(): boolean {
     return false;
   }
 
+}
+
+isCotutelle(): boolean{
+  if(this.wish.get("cotutelle")?.value=="yes"){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
 

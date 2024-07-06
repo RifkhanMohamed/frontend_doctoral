@@ -133,7 +133,9 @@ Editwish=new FormGroup({
   other_establishments:new FormControl(''),
   other_establishments_year:new FormControl(''),
   application_refused:new FormControl(''),
-  application_refused_reason:new FormControl('')
+  application_refused_reason:new FormControl(''),
+  cotutelle:new FormControl('',[Validators.required]),
+  cotutelle_reason:new FormControl('')
 });
 
 getCourse(){
@@ -233,6 +235,10 @@ get co_supervisor_email(){
 }
 
 
+get cotutelle(){
+  return this.Editwish.get('cotutelle');
+}
+
 
 
 onSubmit(){
@@ -321,7 +327,9 @@ onSubmit(){
     "otherestablishments":this.Editwish.get('other_establishments')?.value,
     "otherestablishmentsyear":this.Editwish.get('other_establishments_year')?.value,
     "applicationrefused":this.Editwish.get('application_refused')?.value,
-    "applicationrefusedreason":this.Editwish.get('application_refused_reason')?.value
+    "applicationrefusedreason":this.Editwish.get('application_refused_reason')?.value,
+    "cotutelle":this.Editwish.get('cotutelle')?.value,
+    "cotutellereason":this.Editwish.get('cotutelle_reason')?.value
   }
 
   const formData=new FormData();
@@ -579,6 +587,14 @@ isApplicationRefused(): boolean {
 
 }
 
+isCotutelle(): boolean{
+  if(this.Editwish.get("cotutelle")?.value=="yes"){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
 
 
 removeFile(index: number) {
@@ -719,6 +735,8 @@ getWish(){
     this.Editwish.get('other_establishments_year')?.setValue(this.wish.otherestablishmentsyear);
     this.Editwish.get('application_refused')?.setValue(this.wish.applicationrefused);
     this.Editwish.get('application_refused_reason')?.setValue(this.wish.applicationrefusedreason);
+    this.Editwish.get('cotutelle')?.setValue(this.wish.cotutelle);
+    this.Editwish.get('cotutelle_reason')?.setValue(this.wish.cotutellereason);
 
 
   for(var i=0;i<this.wish.files.length;i++){

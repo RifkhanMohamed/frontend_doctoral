@@ -49,4 +49,16 @@ export class WishService {
   wishGetAllStatusResultsStructure(): Observable<any>{
     return this.http.get<any>(this.base_url+"wish/get/all/status/results/structure");
   }
+
+  wishGetAllStatusResultsDirector(): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/all/status/results/director");
+  }
+
+  wishGetAllStatusResultsExemption(): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/all/status/results/exemption");
+  }
+
+  wishGetAllStatusResultsExemptionDean(): Observable<any>{
+    return this.http.get<any>(this.base_url+"wish/get/all/status/results/exemption/dean");
+  }
 }

@@ -13,6 +13,9 @@ export class AdminSidenavComponent implements OnInit{
   isSuperAdmin=false;
   isThesisDirector=false;
   isStructureManager=false;
+  isDirector=false;
+  isLab=false;
+  isDean=false;
   constructor(){
     if(JSON.parse(localStorage.getItem("user")|| '{}').role[0].role_name=="committee"){
       this.isCommittee=true;
@@ -38,6 +41,25 @@ export class AdminSidenavComponent implements OnInit{
     else{
       this.isStructureManager=false;
     }
+    if(JSON.parse(localStorage.getItem("user")|| '{}').role[0].role_name=="director"){
+      this.isDirector=true;
+    }
+    else{
+      this.isDirector=false;
+    }
+    if(JSON.parse(localStorage.getItem("user")|| '{}').role[0].role_name=="laboratory_manager"){
+      this.isLab=true;
+    }
+    else{
+      this.isLab=false;
+    }
+    if(JSON.parse(localStorage.getItem("user")|| '{}').role[0].role_name=="dean"){
+      this.isDean=true;
+    }
+    else{
+      this.isDean=false;
+    }
+    
   }
 
 }

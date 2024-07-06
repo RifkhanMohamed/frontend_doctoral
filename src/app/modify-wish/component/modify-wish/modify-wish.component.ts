@@ -53,13 +53,13 @@ export class ModifyWishComponent {
     if(JSON.parse(localStorage.getItem("user")|| '{}').role[0].role_name=="user"){
       this.wishService.wishGetByUser(JSON.parse(localStorage.getItem("user")|| '{}').email).subscribe((results)=>{
         this.wish=results;
-        const appliedWish = this.wish.find((item: { status: string; }) => item.status === 'applied');
+        const appliedWish = this.wish.find((item: { status: string; }) => item.status === 'enrolled');
   
   
     if (appliedWish) {
-      this.isDownload=true;
-    } else {
       this.isDownload=false;
+    } else {
+      this.isDownload=true;
     }
       });
     }

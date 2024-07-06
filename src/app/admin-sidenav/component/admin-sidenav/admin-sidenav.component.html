@@ -6,12 +6,15 @@
     <h2 *ngIf="isSuperAdmin" matSubheader class="mt-1" style="color: white; font-size: 30px; margin-left: 60px;">Admin</h2>
     <h2 *ngIf="isCommittee" matSubheader class="mt-1" style="color: white; font-size: 20px; margin-left: 30px;">Commission Member</h2>
     <h2 *ngIf="isThesisDirector" matSubheader class="mt-1" style="color: white; font-size: 30px; margin-left: 90px;">Thesis Director</h2>
-    
+    <h2 *ngIf="isStructureManager" matSubheader class="mt-1" style="color: white; font-size: 30px; ">Structure Manager</h2>
+    <h2 *ngIf="isDirector" matSubheader class="mt-1" style="color: white; font-size: 20px; margin-left: 50px;">Director CEDoc</h2>
+    <h2 *ngIf="isLab" matSubheader class="mt-1" style="color: white; font-size: 30px; margin-left: 35px;">Lab Manager</h2>
+    <h2 *ngIf="isDean" matSubheader class="mt-1" style="color: white; font-size: 30px; margin-left: 90px;">Dean</h2>
     <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-home">
       <mat-icon>home</mat-icon>Home
     </a>
     
-    <ng-container *ngIf="isSuperAdmin || isCommittee || isThesisDirector || isStructureManager">
+    <ng-container *ngIf="isSuperAdmin || isCommittee || isThesisDirector || isStructureManager || isDirector || isLab || isDean">
       <br><br>
       <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/users">
         <mat-icon>account_circle</mat-icon>Students
@@ -40,6 +43,27 @@
         <br><br>
         <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-thesis-director-validated">
           <mat-icon>account_circle</mat-icon>Thesis Director Validated
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isSuperAdmin || isDirector">
+        <br><br>
+        <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/director-final-validation">
+          <mat-icon>account_circle</mat-icon>Final Validation
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isSuperAdmin || isLab">
+        <br><br>
+        <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-lab-manager">
+          <mat-icon>account_circle</mat-icon>Validate exemptions
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isSuperAdmin || isDean">
+        <br><br>
+        <a class="mat-list-item" routerLinkActive="list-item-active" routerLink="/admin-dean">
+          <mat-icon>account_circle</mat-icon>Validate exemptions Dean
         </a>
       </ng-container>
   

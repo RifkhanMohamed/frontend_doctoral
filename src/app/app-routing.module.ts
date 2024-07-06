@@ -37,7 +37,9 @@ const routes: Routes = [
   { path: 'admin-pre-select', loadChildren: () => import('./admin-pre-selected/admin-pre-selected.module').then(e => e.AdminPreSelectedModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee']}},
   { path: 'admin-post-competition', loadChildren: () => import('./admin-post-competition/admin-post-competition.module').then(e => e.AdminPostCompetitionModule),canActivate:[AuthGuard],data:{roles:['super_admin','committee','thesis_director']}},
   { path: 'admin-thesis-director-validated', loadChildren: () => import('./admin-thesis-director-validated/admin-thesis-director-validated.module').then(e => e.AdminThesisDirectorValidatedModule),canActivate:[AuthGuard],data:{roles:['super_admin','structure_manager']}},
-  
+  { path: 'director-final-validation', loadChildren: () => import('./admin-director-final-validation/admin-director-final-validation.module').then(e => e.AdminDirectorFinalValidationModule),canActivate:[AuthGuard],data:{roles:['super_admin','director']}},
+  { path: 'admin-lab-manager', loadChildren: () => import('./admin-lab-manager/admin-lab-manager.module').then(e => e.AdminLabManagerModule),canActivate:[AuthGuard],data:{roles:['super_admin','laboratory_manager']}},
+  { path: 'admin-dean', loadChildren: () => import('./admin-dean/admin-dean.module').then(e => e.AdminDeanModule),canActivate:[AuthGuard],data:{roles:['super_admin','dean']}},
   {path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

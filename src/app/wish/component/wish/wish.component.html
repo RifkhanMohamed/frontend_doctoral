@@ -462,6 +462,19 @@
                   </div>
 
                   <div class="form-group mb-4">
+                    <label for="#">Have you applied Cotutelle PhD Programmes? <span class="astric">*</span></label><br>
+                    <input type="radio" id="yes" name="cotutelle" value="yes" formControlName="cotutelle">
+                    &nbsp;<label for="yes">Yes</label><br>
+                    <input type="radio" id="no" name="cotutelle" value="no" formControlName="cotutelle">
+                    &nbsp;<label for="no">No</label><br>
+                    <span *ngIf="cotutelle && cotutelle.invalid && cotutelle.touched" class="astric">Cotutelle is required</span>
+                  </div>
+                  <div class="form-group mb-4" *ngIf="isCotutelle()">
+                    <label for="#">If yes, which ones and in which year?</label><br>
+                    <input class="form-control" placeholder="Enter cotutelle program and year" formControlName="cotutelle_reason" type="text">
+                  </div>
+
+                  <div class="form-group mb-4">
                     <label for="#">Original diplomas: Baccalauréat, Licence and Master</label>
                     <!-- Replace text input with file input -->
                     <input type="file" class="form-control"  (change)="onFileChange($event)" #selectFile multiple>
